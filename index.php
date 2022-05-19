@@ -3,6 +3,7 @@
 // ini_set("display_errors", 1);
 session_set_cookie_params(0);
 session_start();
+print_r($_COOKIE);
 spl_autoload_register(function ($classe) {
     $folders = array(
         'model',

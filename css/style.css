@@ -513,3 +513,13 @@ select.curt {
 main {
 	width: 80%;
 }
+
+.prodimg {
+	width: 15%;
+}
+
+#single-product {
+	background-color: white;
+	border: 1px solid black;
+	margin: 1rem;
+}

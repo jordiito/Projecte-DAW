@@ -19,7 +19,7 @@ let printProducte = (data) => {
            //alert(data[i].id);
            html+='<p>'+data[i].id+'</p>'+
            '<p>'+data[i].nom+'</p>'+
-           '<img src="productes/'+data[i].imatge+'">';
+           '<img class="prodimg" src="productes/'+data[i].imatge+'">';
            document.getElementById("asd").innerHTML+=html;
         }
     }
