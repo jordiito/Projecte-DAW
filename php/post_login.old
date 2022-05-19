@@ -1,0 +1,29 @@
+<?php
+include_once 'php/functions.php';
+include_once 'config.php';
+
+$sEmail = sanitize($_POST["nom"], 1);
+$sPassword = sanitize($_POST["contrasenya"], 0);
+
+$sSql = "SELECT email,password,nom,cognoms,imatge FROM tbl_usuaris WHERE email='$sEmail' AND password = '$sPassword' AND status='1';";
+
+if (! ($rConexion = new mysqli($dbServidor, $dbUsernamePerAccions, $dbPassword, $dbBaseDeDades))) {
+    $errorsDetectats['bbdd'] = "</br> Error 005 - Problema al connectar amb la base de dades. Error: <br>" . mysqli_connect_error();
+} else if (! ($result = $rConexion->query($sSql))) {
+    $errorsDetectats['bbdd'] = "</br> Error 006 - Problema a l'executar la sentencia: <br> $sSql <br>".mysqli_error($rConexion);
+} else if (($nfilas = $result->num_rows) === 0) {
+    $errorsDetectats['bbdd'] = "</br> Error 007 - La combinació d'usuari i contrasenya no existeix o no està l'uausri actiu <br>";
+} else {
+    //$fila = $result->fetch_array();
+    
+    $fila = $result->fetch_object("Usuario");
+    var_dump($fila);
+    exit;
+    // INICIA LA SESSIÓ
+    $_SESSION['loggedin']=true;
+    $_SESSION['username']=$fila->getNom() . " " . $fila->getCognoms();
+    $_SESSION['email']=$sEmail;
+    $_SESSION['img']=$fila->getImatge();
+}
+
+$rConexion->close();

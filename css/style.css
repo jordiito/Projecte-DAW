@@ -1,0 +1,515 @@
+/* colors en principi
+https://www.colourlovers.com/palette/580974/Adrift_in_Dreams
+*/
+body {
+	margin: 0;
+	font-family: "Roboto", sans-serif;
+}
+
+ul#menu {
+	display: inline-block;
+}
+
+#taulacarreto {
+	border: 1px solid black;
+}
+
+#logo a {
+	color: white;
+}
+
+nav {
+	background-color: #79bd9a;
+	padding: 2rem;
+	display: flex;
+	justify-content: space-between;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+nav a {
+	padding: 0.8rem 1rem;
+	border-radius: 0.5rem;
+	transition: 0.3s;
+}
+
+nav div#user, nav div#carreto {
+	width: 2rem;
+}
+
+nav a.active, nav a:hover {
+	background-color: #3b8686;
+}
+
+nav img, #caticon {
+	width: 2rem;
+	display: inline;
+}
+
+button#cat, #catmenu {
+	background-color: rgba(0, 0, 0, 0);
+	border: none;
+}
+
+#categories {
+	display: none;
+	line-height: 2.5rem;
+}
+
+#categories li {
+	padding: 0px 10px;
+	transition: background-color 2s;
+}
+
+#categories li:hover {
+	background-color: #3b8686;
+}
+
+#catboto {
+	width: 2.7rem;
+	background-color: #3b8686;
+	padding: 0.3rem;
+	border-radius: 0.3rem;
+}
+
+nav a {
+	text-decoration: none;
+	color: white;
+	font-size: 22px;
+}
+
+#logo a {
+	font-size: 34px;
+}
+
+#mainmenu li, a {
+	margin-right: 0.5rem;
+}
+
+nav li, nav ul, footer p, footer ul, #carreto, #user {
+	display: inline;
+}
+
+#productes, #contacte, .pl-container, .rg-container, .infos {
+	text-align: center;
+	padding: 1rem;
+	background-color: #e7e7e7;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 12px;
+	margin: 1rem;
+	border-radius: 5px;
+}
+
+#contacte {
+	margin: 2rem auto;
+}
+
+.contacte-container {
+	background-color: white;
+}
+
+ul li {
+	list-style-type: none;
+}
+
+aside {
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px;
+	width: 15%;
+	padding: 1rem;
+}
+
+.container {
+	display: flex;
+}
+
+footer {
+	padding: 1em;
+	justify-content: space-between;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 12px;
+}
+
+footer .container {
+	width: 70%;
+	margin: auto;
+}
+
+footer p {
+	display: inline-block;
+}
+
+.producte, .contacte-block {
+	text-align: center;
+	padding: 1rem;
+	width: 20%;
+	display: inline-block;
+	margin: 0.5rem;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 12px;
+	background-color: white;
+	border-radius: 5px;
+}
+
+.producte button {
+	border-radius: 5px;
+	border: 1px solid black;
+	padding: 0.5rem 1rem;
+}
+
+.producte button:hover {
+	transition: background-color 1s;
+}
+
+.producte img {
+	width: 15rem;
+}
+
+.footersec {
+	margin: auto;
+	line-height: 2rem;
+}
+
+.footersec a {
+	color: #3b8686;
+	text-decoration: none;
+}
+
+/* Contacte container*/
+#contacte {
+	width: 1000px;
+	line-height: 2rem;
+}
+
+.contacte-blocks {
+	display: grid;
+	grid-template-areas: "a b" "c d";
+	grid-gap: 10px;
+	justify-items: center;
+	margin: 0px 10%;
+	padding: 20px 50px;
+}
+
+.contacte-container h1 {
+	padding-top: 50px;
+}
+
+.contacte-block {
+	width: 300px;
+	height: 300px;
+	text-align: center;
+	padding-top: 60px;
+}
+
+.contacte-block:nth-child(1) {
+	grid-area: a;
+	height: 200px;
+}
+
+.contacte-block:nth-child(2) {
+	grid-area: b;
+	margin-right: 0px;
+	height: 200px;
+}
+
+.contacte-block:nth-child(3) {
+	grid-area: c;
+}
+
+.contacte-block:nth-child(3) .contacte-horario {
+	font-size: small;
+}
+
+.contacte-block:nth-child(4) {
+	grid-area: d;
+	margin-right: 0px;
+}
+
+.contacte-block .contacte-title {
+	margin: 4px auto 15px auto;
+	font-weight: bold;
+}
+
+.contacte-block img {
+	width: 50px;
+}
+
+.contacte-block a, .rg-container input[type="submit"], .curt, .llarg {
+	border: 1.5px solid #79bd9a;
+	padding: 0.5rem;
+	color: white;
+	text-decoration: none;
+	background-color: #79bd9a;
+	border-radius: 0px;
+}
+
+.contacte-block a:hover, .rg-container input[type="submit"]:hover {
+	background-color: white;
+	transition: background-color 1.5s;
+	color: black;
+}
+
+/*politica container*/
+.pl-container, .rg-container {
+	width: 1000px;
+	margin: 35px auto;
+	padding: 40px 20px 100px;
+}
+
+.pl-container main, .rg-container main {
+	background-color: white;
+	padding: 40px 60px 80px 60px;
+}
+
+.pl-container .pl-title {
+	text-align: center;
+}
+
+.pl-container .pl-paragraf {
+	margin: 30px;
+	line-height: 2rem;
+	text-align: justify;
+}
+
+.pl-container span {
+	font-weight: bold;
+}
+
+/*registre container*/
+.rg-container {
+	color: #3b8686;
+}
+
+.rg-container label {
+	color: #3b8686;
+	line-height: 2rem;
+}
+
+.rg-container input[type="text"], .rg-container input[type="password"],
+	.curt, .llarg {
+	border: 1px solid #8bc7c7;
+	line-height: 2rem;
+	width: 300px;
+	padding: 0px 20px;
+	font-size: 18px;
+	color: #3b8686;
+}
+
+.rg-container input[type="button"] {
+	font-size: 18px;
+	font-weight: normal;
+}
+
+.rg-container a {
+	text-decoration: none;
+	color: #3b8686;
+	font-weight: bolder;
+}
+
+.rg-container a:hover {
+	color: black;
+	transition: color 1s;
+}
+
+.rg-last {
+	line-height: 4rem;
+}
+
+#carrito {
+	position: absolute;
+	right: 0px;
+	background-color: white;
+	border-radius: 5px;
+	padding: 1rem;
+	float: right;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+	text-align: center;
+	display: none;
+}
+
+#carrito thead tr {
+	background-color: #79bd9a;
+	color: white;
+}
+
+#carrito th {
+	padding: 0.5rem;
+}
+
+#carrito table {
+	text-align: center;
+	margin: 0 auto;
+	border-collapse: collapse;
+}
+
+.imgCarreto {
+	width: 7em;
+}
+
+tr:nth-child(2n) {
+	background-color: rgba(121, 189, 154, 0.1);
+}
+
+.icono {
+	width: 1rem;
+	margin-right: 0.5rem;
+}
+
+#catmenu {
+	display: none;
+}
+
+.salt {
+	display: none;
+}
+
+.footersec img {
+	display: none;
+}
+
+input {
+	margin-top: 10px;
+}
+
+#homeDona input, #homeDona label {
+	width: 50px;
+}
+
+#homeDona {
+	width: 710px;
+	margin-top: 20px;
+	margin-left: 0px;
+}
+
+@media only screen and (min-width: 1355px) {
+	ul#menu {
+		display: inline-block;
+	}
+}
+
+select.curt {
+	margin-top: 10px;
+	width: 344px;
+	height: 34px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1354px) {
+	#mainmenu li, a {
+		margin-right: 0rem;
+	}
+	.producte img {
+		width: 9rem;
+	}
+}
+
+/* mobil*/
+@media only screen and (max-width: 767px) {
+	#catmenu {
+		display: block;
+		position: absolute;
+		right: 15px;
+	}
+	#menu {
+		width: 100%;
+		position: absolute;
+		top: 90px;
+		right: 0;
+		background-color: rgb(204, 223, 213);
+		text-align: left;
+	}
+	#mainmenu a.active {
+		background-color: rgb(204, 223, 213);
+	}
+	#menu {
+		padding: 1rem;
+	}
+	ul#menu li {
+		width: 300px;
+		padding-left: 50px;
+	}
+	#menu li a:hover {
+		background-color: white;
+	}
+	#mainmenu a {
+		color: #3b8686;
+	}
+	nav a {
+		padding: 0rem;
+		width: 100%;
+	}
+	ul#menu li:active, ul#menu li:hover {
+		background-color: rgb(204, 223, 213);
+	}
+	.salt {
+		display: block;
+	}
+	#carreto a {
+		margin-right: 25px;
+	}
+	#carrito {
+		width: 100%;
+	}
+	aside {
+		display: none;
+	}
+	.producte img {
+		width: 20rem;
+	}
+	.producte {
+		width: 90%;
+	}
+	#productes {
+		margin: 0rem;
+		width: 85%;
+	}
+	#carrito input[type="number"] {
+		width: 25px;
+	}
+	div#user a {
+		padding: 0;
+		margin: 0;
+	}
+	.footersec {
+		margin: 0px;
+		line-height: 1.5rem;
+	}
+	.container {
+		display: block;
+	}
+	.footersubtitul {
+		border-top: solid 1px rgb(192, 187, 187);
+		border-bottom: solid 1px rgb(192, 187, 187);
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	.footersec img {
+		display: inline-block;
+		width: 15px;
+		height: 15px;
+		float: right;
+		padding-top: 16px;
+		padding-right: 15px;
+	}
+	.footersec li {
+		padding-bottom: 10px;
+	}
+	.footersec ul {
+		display: none;
+	}
+	.footersec a {
+		
+	}
+	.show {
+		display: block !important;
+	}
+	.toggleSeccio {
+		cursor: pointer;
+	}
+	footer .container {
+		margin: 0;
+		width: 100%;
+	}
+	footer {
+		padding: 0;
+	}
+}
+
+
+main {
+	width: 80%;
+}

@@ -1,0 +1,115 @@
+<?php
+function insertUser(User $usuari) {
+    global $titol;
+    global $missatge;
+    include "config.php";
+    
+    if ($idConnexioPerAccions = new mysqli($dbServidor, $dbUsernamePerAccions, $dbPassword, $dbBaseDeDades)) {
+        $sTelefon = ($usuari->getTelefon() == "") ? "null" : $usuari->getTelefon();
+        
+        $sSql = "INSERT INTO tbl_usuaris (id, email, password, tipusIdent, numeroIdent, nom, cognoms, sexe, datanaixement, adreca, codiPostal, poblacio, provincia, telefon, imatge, status, navegador, plataforma, dataCreacio, dataDarrerAcces) ";
+        $sSql .= "VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);";
+        $stmt = $idConnexioPerAccions->prepare($sSql);
+        $stmt->bind_param("ssssssssssssisss", $sEmail, $sPassword, $sTipus, $sDni, $sNom, $sCognoms, $sSexe, $dNaixement, $sAdreca, $sCP, $sPoblacio, $sProvincia, $sTelefon, $rutaNova, $sNavegador, $sPlataforma);
+        
+        $sEmail = $usuari->getEmail();
+        $sPassword = $usuari->getPassword();
+        $sTipus = $usuari->getTipusIdent();
+        $sDni = $usuari->getNumeroIdent();
+        $sNom = $usuari->getNom();
+        $sCognoms = $usuari->getCognoms();
+        $sSexe = $usuari->getSexe();
+        $dNaixement = $usuari->getDatanaixement();
+        $sAdreca = $usuari->getAdreca();
+        $sCP = $usuari->getCodiPostal();
+        $sPoblacio = $usuari->getPoblacio();
+        $sProvincia = $usuari->getProvincia();
+        $sTelefon =$usuari->getTelefon();
+        $rutaNova = $usuari->getImatge();
+        $sNavegador = $usuari->getNavegador();
+        $sPlataforma = $usuari->getPlataforma();
+        
+        if ($consulta = $stmt->execute()) {
+            $_SESSION["nom"] = "$sNom, $sCognoms";
+            $idDelRegistreInsertat = $idConnexioPerAccions->insert_id;
+            // enviaMail($sEmail, $sNom, $idDelRegistreInsertat);
+            $titol = "Procès finalitzat correctament";
+            $missatge = "El procès de registre ha finacilitzat amb éxit i ja estàs donat d'alta i podràs accedir a la noastra àrea privada.<br>Només et queda accedir al teu mail i verificar l'adreça. <br>Moltes gràcies<br><br>";
+            $missatge .= "Benvolgut/da $sNom $sCognoms<br>
+Ens complau donar-te la benvinguda a la nova aplicació mòbil de residents des de la qual podràs realitzar el pagament mitjançant un telèfon smartphone quan estacionis el teu vehicle a la teva zona de resident de l’AREA de Barcelona sense la necessitat d’anar al parquímetre.<br>
+Per procedir a l’activació del compte has de prémer el següent <a href='?conf=$idDelRegistreInsertat'>enllaç</a>.<br>
+Recorda que pots obtenir ajuda i tota la informació sobre el funcionament de l’aplicació mòbil ONaparcar Residents accedint a la secció preguntes freqüents i que en cas d’ incidència ens ho pots notificar mitjançant el formulari de suport tècnic.<br>
+<br>
+Atentament, ";
+        } else {
+            $errorsDetectats["baseDades"] = "Hi ha un error en al consulta a la BBDD: <br>" . $idConnexioPerAccions->error . "<br>$sSql<br>";
+        }
+    } else {
+        $errorsDetectats["baseDades"] = "No s'ha pogut conectar a la base de dades: <br>" . $idConnexioPerAccions->connect_errno . " -> " . $idConnexioPerAccions->connect_error . "<br>";
+    }
+    $idConnexioPerAccions->close();
+    return $errorsDetectats;
+}
+
+$sEmail = sanitize($_POST["email"], 1);
+$sPassword = sanitize($_POST["pass"], 0);
+$cPassword = sanitize($_POST["cpass"], 0);
+
+$sTipus = sanitize($_POST["tipus"], 2);
+$sDni = sanitize($_POST["dni"], 2);
+$sNom = sanitize($_POST["nom"], 1);
+$sCognoms = sanitize($_POST["cognoms"], 1);
+$sSexe = sanitize($_POST["sexe"], 2);
+$dNaixement = sanitize($_POST["naixement"], 0);
+
+$sAdreca = sanitize($_POST["adreca"], 1);
+$sCP = sanitize($_POST["cp"], 0);
+$sPoblacio = sanitize($_POST["poblacio"], 1);
+$sProvincia = sanitize($_POST["provincia"], 1);
+$sTelefon = sanitize($_POST["telefon"], 0);
+
+$sImatge = sanitize($_FILES['imatge']['name'], 0);
+
+$nouUsuari = new Usuario();
+$nouUsuari->setEmail($sEmail);
+$nouUsuari->setPassword($sPassword, $cPassword);
+$nouUsuari->setTipusIdent($sTipus);
+$nouUsuari->setNumeroIdent($sDni);
+$nouUsuari->setNom($sNom);
+$nouUsuari->setCognoms($sCognoms);
+$nouUsuari->setSexe($sSexe);
+$nouUsuari->setDatanaixement($dNaixement);
+$nouUsuari->setAdreca($sAdreca);
+$nouUsuari->setCodiPostal($sCP);
+$nouUsuari->setPoblacio($sPoblacio);
+$nouUsuari->setProvincia($sProvincia);
+$nouUsuari->setTelefon($sTelefon);
+$nouUsuari->setNavegador();
+$nouUsuari->setPlataforma();
+$nouUsuari->setStatus(0);
+$nouUsuari->setImatge($sImatge);
+
+
+if (! isset($nouUsuari->errorsDetectats)) {
+    $errorsDetectats = insertUser($nouUsuari);
+} else {
+    $sEmail = $nouUsuari->getEmail();
+    $sPassword = $nouUsuari->getPassword();
+    $cPassword = $nouUsuari->getPassword();
+    $sTipus = $nouUsuari->getTipusIdent();
+    $sDni = $nouUsuari->getNumeroIdent();
+    $sNom = $nouUsuari->getNom();
+    $sCognoms = $nouUsuari->getCognoms();
+    $sSexe = $nouUsuari->getSexe();
+    $dNaixement = $nouUsuari->getDatanaixement();
+    $sAdreca = $nouUsuari->getAdreca();
+    $sCP = $nouUsuari->getCodiPostal();
+    $sPoblacio = $nouUsuari->getPoblacio();
+    $sProvincia = $nouUsuari->getProvincia();
+    $sTelefon =$nouUsuari->getTelefon();
+    
+    $errorsDetectats = $nouUsuari->errorsDetectats;
+    $errorsDetectats["error"] = "S'ha detectat algun tipus d'error. Revisa les dades introduides.";
+}
+
+?>
