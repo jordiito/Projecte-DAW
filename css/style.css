@@ -514,12 +514,18 @@ main {
 	width: 80%;
 }
 
-.prodimg {
-	width: 15%;
+#productimg {
+	float: left;
 }
+.prodimg {
+	width: 50%;
+}
+
+
 
 #single-product {
 	background-color: white;
 	border: 1px solid black;
 	margin: 1rem;
+	height: 50%;
 }

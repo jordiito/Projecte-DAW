@@ -28,8 +28,9 @@ try {
         <img class="prodimg" src="productes/<?php echo $img;?>">
     </div>
     <div id="productinfo">
-        <p><?php echo $nom;?></p>
+        <h1><?php echo $nom;?></h1>
         <p><?php echo $preu;?></p>
+        <button>Afegir al carretó</button>
     </div>
 
 </div>

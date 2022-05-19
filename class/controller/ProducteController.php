@@ -13,5 +13,11 @@ class ProducteController extends Controller
         $producte = new ProducteView();
         $producte->show();
     }
+
+    public function save($string)
+    {
+        $insertProductes = new ProducteModelo();
+        $insertProductes->insert(getcwd() . "/cataleg.json");
+    }
 }
 
