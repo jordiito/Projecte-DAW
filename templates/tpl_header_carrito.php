@@ -1,40 +1,37 @@
-<!--  <div class="logo">
-	<logomenu>
-	<ul>
-		<li class="logo">Thos i Codina</li>
-		<li>M07</li>
-		<li>UF1</li>
-		<li>2021-2022</li>
-	</ul>
-	</logomenu>
-	<infosmenu>
-	<ul>
-		<a href='?url=ContactController/show'>
-			<li><?php echo $mainContacta;?></li>
-		</a>
 <?php
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === TRUE ) {
-?>
-		<a href='?url=UsuarioController/logout'>
-			<img src="<?php echo $_SESSION['img'];?>" alt="imatge de l'usuari" width="50" height="50" >
-		</a>
-<?php 
-} else {
-?>
-		<a href='?url=UsuarioController/login'>
-			<li class="btn"><?php echo $mainLog_in;?></li>
-		</a>
-<?php 
+if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['product_id']) && is_numeric($_POST['quantity'])) {
+    // Set the post variables so we easily identify them, also make sure they are integer
+    $product_id = (int)$_POST['product_id'];
+    $quantity = (int)$_POST['quantity'];
+    // Prepare the SQL statement, we basically are checking if the product exists in our databaser
+    $stmt = $pdo->prepare('SELECT * FROM products WHERE id = ?');
+    $stmt->execute([$_POST['product_id']]);
+    // Fetch the product from the database and return the result as an Array
+    $product = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Check if the product exists (array is not empty)
+    if ($product && $quantity > 0) {
+        // Product exists in database, now we can create/update the session variable for the cart
+        if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+            if (array_key_exists($product_id, $_SESSION['cart'])) {
+                // Product exists in cart so just update the quanity
+                $_SESSION['cart'][$product_id] += $quantity;
+            } else {
+                // Product is not in cart so add it
+                $_SESSION['cart'][$product_id] = $quantity;
+            }
+        } else {
+            // There are no products in cart, this will add the first product to cart
+            $_SESSION['cart'] = array($product_id => $quantity);
+        }
+    }
+    // Prevent form resubmission...
+    header('location: ?page=cart');
+    exit;
 }
 ?>
-
-	</ul>
-	</infosmenu>
-</div>
--->
-
-        <div id="carrito">
-            <p>(1) Producte al carretó</p>
+     
+     <div id="carrito">
+            <p>(21) Producte al carretó</p>
             <table id="taulacarreto">
                 <tbody>
                     <tr id="producteid">

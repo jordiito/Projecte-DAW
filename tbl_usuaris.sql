@@ -2,11 +2,6 @@ drop database if exists botiga;
 create database botiga character set utf8 collate utf8_general_ci;
 use botiga;
 
-CREATE TABLE categoria (
-    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nom varchar(40) NOT NULL
-);
-
 CREATE TABLE usuari (
     id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nom varchar(40) NOT NULL,
@@ -27,6 +22,7 @@ CREATE TABLE producte (
     id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     gtin varchar(13) NOT NULL,
     nom varchar(40) NOT NULL,
+    categoria varchar(40) DEFAULT NULL,
     descripcio varchar(340) DEFAULT NULL,
     imatge varchar(100) DEFAULT NULL,
     preu decimal(10,2) NOT NULL,

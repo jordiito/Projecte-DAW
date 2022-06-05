@@ -1,9 +1,10 @@
 <?php
- error_reporting(E_ALL);
+// error_reporting(E_ALL);
 // ini_set("display_errors", 1);
 session_set_cookie_params(0);
 session_start();
 print_r($_COOKIE);
+print_r($_SESSION['cart']);
 spl_autoload_register(function ($classe) {
     $folders = array(
         'model',

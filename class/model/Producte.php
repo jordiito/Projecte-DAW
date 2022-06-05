@@ -7,7 +7,11 @@ class Producte
 
     private $gtin;
 
-    private $nom;
+    private $marca;
+
+    private $model;
+
+    private $categoria;
 
     private $descripcio;
 
@@ -39,9 +43,27 @@ class Producte
      *
      * @return mixed
      */
-    public function getNom()
+    public function getMarca()
     {
-        return $this->nom;
+        return $this->marca;
+    }
+
+    /**
+     *
+     * @return mixed
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    /**
+     *
+     * @return mixed
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
     }
 
     /**
@@ -102,9 +124,27 @@ class Producte
      *
      * @param mixed $nom
      */
-    public function setNom($nom)
+    public function setMarca($marca)
     {
-        $this->nom = $nom;
+        $this->marca = $marca;
+    }
+
+    /**
+     *
+     * @param mixed $nom
+     */
+    public function setModel($model)
+    {
+        $this->model = $model;
+    }
+
+    /**
+     *
+     * @param mixed $nom
+     */
+    public function setCategoria($categoria)
+    {
+        $this->categoria = $categoria;
     }
 
     /**

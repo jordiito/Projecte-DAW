@@ -516,16 +516,28 @@ main {
 
 #productimg {
 	float: left;
+	margin-right: 15rem;
+	margin-left: 5rem;
 }
 .prodimg {
-	width: 50%;
+	width: 100%;
 }
 
-
+#productinfo {
+	padding: 1rem;
+	margin-top: 5rem;
+}
 
 #single-product {
 	background-color: white;
 	border: 1px solid black;
-	margin: 1rem;
-	height: 50%;
+	border-radius: 5px;
+	margin: 1rem 25rem;
+	padding: 1rem;
+	height: 35rem;
+}
+
+.preu {
+	font-size: 25px;
+	font-weight: bold;
 }
