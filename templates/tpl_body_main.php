@@ -27,7 +27,9 @@ if (isset($_POST['add_to_cart'])) {
 			$count = count($_SESSION['cart']);
 			$products_array = array(
 				'product_id' => $_GET['id'],
-
+				'product_name' => $_POST['nom'],
+				'product_price' => $_POST['preu'],
+				'product_img' => $_POST['img'],
 				'product_qty' => 1
 			);
 			$_SESSION["cart"][$count] = $products_array;
@@ -37,7 +39,9 @@ if (isset($_POST['add_to_cart'])) {
 	} else {
 		$products_array = array(
 			'product_id' => $_GET['id'],
-
+			'product_name' => $_POST['nom'],
+			'product_price' => $_POST['preu'],
+			'product_img' => $_POST['img'],
 			'product_qty' => 1
 		);
 		$_SESSION["cart"][0] = $products_array;
@@ -93,7 +97,10 @@ if (isset($_POST['add_to_cart'])) {
 					<a href='index.php?url=ProducteController/show&amp;p=$p[id]'><p>$p[marca] $p[model]</p>
 					<img src='productes/$p[imatge]'/></a>
 					<p>$p[preu]€ (IVA Inclòs)</p>
-					<form action='index.php?id=$p[id]' method='post'> 
+					<form action='index.php?id=$p[id]' method='post'>
+					<input type='hidden' name='img' value='$p[imatge]'/>
+					<input type='hidden' name='nom' value='$p[marca] $p[model]'/>
+					<input type='hidden' name='preu' value='$p[preu]'/>
 					<button type='submit' name='add_to_cart' value='$p[id]'>Afegir al carretó</button>
 					</form>
 				</div>";
