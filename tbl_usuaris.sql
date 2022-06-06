@@ -30,27 +30,25 @@ CREATE TABLE producte (
     pes decimal(10,2) NOT NULL
 );
 
-CREATE TABLE producte_categoria (
-    id_producte int NOT NULL,
-    id_categoria int NOT NULL,
-    FOREIGN KEY(id_producte) REFERENCES producte(id)
-    on delete restrict
-    on update cascade,
-    FOREIGN KEY(id_categoria) REFERENCES categoria(id)
-    on delete restrict
-    on update cascade
-);
 
 CREATE TABLE comanda (
     id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     user_id int NOT NULL,
-    producte_id int NOT NULL,
-    data timestamp NOT NULL,
+    pagament_id int DEFAULT NULL,
+    data timestamp NOT NULL DEFAULT NOW(),
     FOREIGN KEY(user_id) REFERENCES usuari(id)  
     on delete restrict
-    on update cascade,
+    on update cascade
+);
+
+CREATE TABLE detalls_comanda (
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    producte_id int NOT NULL,
+    comanda_id  int NOT NULL,
+    quantitat int NOT NULL,
+    preu decimal(10,2) NOT NULL,
+    subTotal decimal(10,2) NOT NULL,
     FOREIGN KEY(producte_id) REFERENCES producte(id)  
     on delete restrict
     on update cascade
-
-)
+);

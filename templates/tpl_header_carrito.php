@@ -1,5 +1,5 @@
 <div id="carrito">
-    <form action='?url=CarretoController/update' method='post'>
+    <form action='?url=CarretoController/operacions' method='post'>
         <?php
         if (isset($_SESSION['cart'])) {
             $productoscarrito = $_SESSION['cart'];
@@ -17,12 +17,13 @@
                 $preu_qty = ($prod['product_price'] * $prod['product_qty']);
                 echo "
                     <tr id=$prod[product_id]>
+                    <input type='hidden' name='user_id' value='1'/>
+                    <input type='hidden' name='product_id' value='$prod[product_id]'/>
                         <td>
                             <img src='productes/$prod[product_img]' class='imgCarreto' />
                         </td>
                         <td>
                             <span>$prod[product_name]</span>
-
                             <button type='submit' name='remove' value=$prod[product_id]>Eliminar</button>
 
                         </td>
@@ -50,7 +51,7 @@
     <button type='submit' name='clear' value='Netejar'>Netejar</button>
     <button type='submit' name='updatecart' value='Actualitzar'>Actualitzar</button>
     <p>Import total: $total €</p>
-    <button>Comprar</button>";
+    <button type='submit' name='comprar' value='Comprar'>Comprar</button>";
         } ?>
     </form>
 </div>

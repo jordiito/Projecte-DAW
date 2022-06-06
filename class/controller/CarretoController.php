@@ -48,7 +48,7 @@ class CarretoController extends Controller
         exit();
     }
 
-    public function update()
+    public function operacions()
     {
         if (isset($_POST['clear'])) {
             unset($_SESSION['cart']);
@@ -72,8 +72,17 @@ class CarretoController extends Controller
                 unset($_SESSION['cart']);
             }
         }
+        
+        if (isset($_POST['comprar'])) {
+            print_r($_POST);
+            $mComanda = new ComandaModelo();
+            $this->comanda = new Comanda();
+            $this->comanda->setUserId($this->sanitize($_POST['user_id']));
+            $this->comanda->setPagamentId($this->sanitize('1234'));
+            $mComanda->save($this->comanda);
+        }
 
-        header("Location: http://localhost/projecte-daw/index.php");
-        exit();
+      //  header("Location: http://localhost/projecte-daw/index.php");
+       // exit();
     }
 }
