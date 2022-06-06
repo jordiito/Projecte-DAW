@@ -51,7 +51,7 @@ if (isset($_POST['add_to_cart'])) {
 			'product_qty' => 1
 		);
 		$arr[0] = $products_array;
-		setCookie("cart", json_encode($arr), time()+3600);
+		setCookie('cart', json_encode($arr), time()+3600);
 	}
 }
 
