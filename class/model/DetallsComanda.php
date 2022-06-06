@@ -7,6 +7,8 @@ class DetallsComanda
 
     private $producte_id;
 
+    private $comanda_id;
+
     private $quantitat;
 
     private $preu;
@@ -35,6 +37,15 @@ class DetallsComanda
      *
      * @return mixed
      */
+    public function getComandaId()
+    {
+        return $this->comanda_id;
+    }
+
+    /**
+     *
+     * @return mixed
+     */
     public function getQuantitat()
     {
         return $this->quantitat;
@@ -55,7 +66,7 @@ class DetallsComanda
      */
     public function getSubtotal()
     {
-        return $this->subtotal;
+        return $this->subTotal;
     }
 
 

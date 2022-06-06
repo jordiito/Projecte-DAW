@@ -50,5 +50,8 @@ CREATE TABLE detalls_comanda (
     subTotal decimal(10,2) NOT NULL,
     FOREIGN KEY(producte_id) REFERENCES producte(id)  
     on delete restrict
+    on update cascade,
+    FOREIGN KEY(comanda_id) REFERENCES comanda(id)  
+    on delete restrict
     on update cascade
 );

@@ -29,8 +29,10 @@ class Model
 
     public function __destruct()
     {
+        if (!isset($_POST['comprar'])) {
         $this->queryLink->close();
         $this->actionLink->close();
+    }
     }
 
     public static function getInstance()

@@ -17,10 +17,11 @@ class DetallsComandaModelo extends Model
 
         foreach ($array as $i => $j) {
             $detallsComanda = new DetallsComanda();
-            $detallsComanda->setProducteId($j["user_id"]);
-            $detallsComanda->setQuantitat($j["user_id"]);
-            $detallsComanda->setPreu($j["pagament_id"]);
-            $detallsComanda->setSubtotal($j["user_id"]);
+            $detallsComanda->setProducteId($j["producte_id"]);
+            $detallsComanda->setComandaId($j["comanda_id"]);
+            $detallsComanda->setQuantitat($j["quantitat"]);
+            $detallsComanda->setPreu($j["preu"]);
+            $detallsComanda->setSubtotal($j["subTotal"]);
 
             $this->save($detallsComanda);
         }
@@ -28,12 +29,13 @@ class DetallsComandaModelo extends Model
 
     public function save(DetallsComanda $detallsComanda)
     {
-        $sSql = "INSERT INTO comanda (id, producte_id, comanda_id, quantitat, preu, subTotal)";
+        $sSql = "INSERT INTO detalls_comanda (id, producte_id, comanda_id, quantitat, preu, subTotal)";
         $sSql .= "VALUES (NULL, ?, ?, ?, ?, ?);";
 
         $sParam = array(
             "sssss",
             $detallsComanda->getProducteId(),
+            $detallsComanda->getComandaId(),
             $detallsComanda->getQuantitat(),
             $detallsComanda->getPreu(),
             $detallsComanda->getSubtotal(),

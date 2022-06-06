@@ -55,7 +55,7 @@ class CarretoController extends Controller
         }
 
         if (isset($_POST['updatecart'])) {
-            foreach($_POST['qty'] as $id => $quantitat) {
+            foreach ($_POST['qty'] as $id => $quantitat) {
                 $column = array_column($_SESSION['cart'], 'product_id');
                 $found_key = array_search($id, $column);
                 $_SESSION['cart'][$found_key]['product_qty'] = $quantitat;
@@ -67,22 +67,39 @@ class CarretoController extends Controller
                 $column = array_column($_SESSION['cart'], 'product_id');
                 $found_key = array_search($_POST['remove'], $column);
                 array_splice($_SESSION['cart'], $found_key, 1);
-    
             } else {
                 unset($_SESSION['cart']);
             }
         }
-        
+
         if (isset($_POST['comprar'])) {
             print_r($_POST);
+            print_r($_SESSION['cart']);
             $mComanda = new ComandaModelo();
             $this->comanda = new Comanda();
             $this->comanda->setUserId($this->sanitize($_POST['user_id']));
             $this->comanda->setPagamentId($this->sanitize('1234'));
             $mComanda->save($this->comanda);
+            $ultComanda = $mComanda->getLastId();
+            $productoscarrito = $_SESSION['cart'];
+            foreach ($productoscarrito as $prod) {
+                $subTotal = ($prod['product_price'] * $prod['product_qty']);
+                $mDetallsComanda = new DetallsComandaModelo();
+                $this->detallsComanda = new DetallsComanda();
+                $this->detallsComanda->setProducteId($this->sanitize($prod['product_id']));
+                $this->detallsComanda->setComandaId($ultComanda);
+                $this->detallsComanda->setQuantitat($this->sanitize($prod['product_qty']));
+                $this->detallsComanda->setPreu($this->sanitize($prod['product_price']));
+                $this->detallsComanda->setSubtotal($subTotal);
+                $mDetallsComanda->save($this->detallsComanda);
+                echo $subTotal;
+            }
+            unset($_SESSION['cart']);
+
+            // printf ("New Record has id %d.\n", $mComanda->getLastId());
         }
 
-      //  header("Location: http://localhost/projecte-daw/index.php");
-       // exit();
+        header("Location: http://localhost/projecte-daw/index.php");
+        exit();
     }
 }
