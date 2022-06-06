@@ -21,7 +21,8 @@ CREATE TABLE usuari (
 CREATE TABLE producte (
     id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     gtin varchar(13) NOT NULL,
-    nom varchar(40) NOT NULL,
+    marca varchar(40) NOT NULL,
+    model varchar(40) NOT NULL,
     categoria varchar(40) DEFAULT NULL,
     descripcio varchar(340) DEFAULT NULL,
     imatge varchar(100) DEFAULT NULL,
