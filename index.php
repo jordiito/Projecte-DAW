@@ -2,6 +2,7 @@
 // error_reporting(E_ALL);
 // ini_set("display_errors", 1);
 session_set_cookie_params(0);
+ini_set('session.cookie_lifetime', 60 * 60 * 24 * 7);  // la sessio dura 7 dies
 session_start();
 print_r($_COOKIE["lang"]);
 print_r($_COOKIE);

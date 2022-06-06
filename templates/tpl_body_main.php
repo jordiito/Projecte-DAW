@@ -21,14 +21,10 @@ try {
 
 if (isset($_POST['add_to_cart'])) {
 
-	if (isset($_COOKIE['cart'])) {
-		$arr = json_decode(($_COOKIE['cart']), true);
-		print_r($arr);
-		$item_array_id = array_column($arr, "product_id");
-		print_r($item_array_id);
+	if (isset($_SESSION['cart'])) {
+		$item_array_id = array_column($_SESSION['cart'], "product_id");
 		if (!in_array($_GET['id'], $item_array_id)) {
-			$count = count($arr);
-			print_r($count);
+			$count = count($_SESSION['cart']);
 			$products_array = array(
 				'product_id' => $_GET['id'],
 				'product_name' => $_POST['nom'],
@@ -36,9 +32,7 @@ if (isset($_POST['add_to_cart'])) {
 				'product_img' => $_POST['img'],
 				'product_qty' => 1
 			);
-			$arr[$count] = $products_array;
-			setCookie('cart', json_encode($arr), time()+3600);
-			echo 'hola';
+			$_SESSION["cart"][$count] = $products_array;
 		} else {
 			echo '<script>alert("Aquest producte ja esta al teu carreto, pots augmentar la quantitat accedint a ell")</script>';
 		}
@@ -50,8 +44,7 @@ if (isset($_POST['add_to_cart'])) {
 			'product_img' => $_POST['img'],
 			'product_qty' => 1
 		);
-		$arr[0] = $products_array;
-		setCookie('cart', json_encode($arr), time()+3600);
+		$_SESSION["cart"][0] = $products_array;
 	}
 }
 

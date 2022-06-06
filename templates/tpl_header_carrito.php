@@ -1,25 +1,21 @@
 <?php
 print_r($_SESSION['cart']);
-print_r($_COOKIE['cart']);
 ?>
 
 <div id="carrito">
-    <?php
-    
-    if (isset($_COOKIE['cart'])) {
-		$arr = json_decode(($_COOKIE['cart']), true);
-        print_r($arr);
-        echo "
-    <p>(" . count($arr) . ") Producte";
-        if (count($arr) > 1) {
-            echo "s";
-        }
-        echo " al carretó</p>
+<?php
+            if (isset($_SESSION['cart'])) {
+                $productoscarrito = $_SESSION['cart'];
+                echo "
+    <p>(" . count($productoscarrito) . ") Producte"; 
+    if (count($productoscarrito) > 1) {
+        echo "s";
+    } echo " al carretó</p>
     <table id='taulacarreto'>
         <tbody>";
-
-        foreach ($arr as $prod) {
-            echo "
+           
+                foreach ($productoscarrito as $prod) {
+                    echo "
                     <tr id=$prod[product_id]>
                         <td>
                             <img src='productes/$prod[product_img]' class='imgCarreto' />
@@ -34,10 +30,10 @@ print_r($_COOKIE['cart']);
                             <span>$prod[product_price]€</span>
                         </td>
                     </tr>";
-        }
-    }
+                }
+            }
 
-    ?>
-    </tbody>
+            ?>
+        </tbody>
     </table>
 </div>

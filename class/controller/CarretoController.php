@@ -16,7 +16,7 @@ class ProducteController extends Controller
 
     public function add($string)
     {
-        isset($_SESSION[''])
+    
     }
 }
 
