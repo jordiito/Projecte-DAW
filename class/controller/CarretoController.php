@@ -24,13 +24,12 @@ class CarretoController extends Controller
                 'product_img' => $_POST['img'],
                 'product_qty' => isset($_POST['qty']) ? $_POST['qty'] : 1
             );
-        
         }
-    	if (isset($_SESSION['cart'])) {
+        if (isset($_SESSION['cart'])) {
             $item_array_id = array_column($_SESSION['cart'], "product_id");
             if (!in_array($_POST['add_to_cart'], $item_array_id)) {
                 $count = count($_SESSION['cart']);
-    
+
                 $_SESSION["cart"][$count] = $products_array;
             } else {
                 echo '<script>alert("Aquest producte ja esta al teu carreto, pots augmentar la quantitat accedint a ell")</script>';
@@ -46,7 +45,7 @@ class CarretoController extends Controller
             $_SESSION["cart"][0] = $products_array;
         }
         header("Location: http://localhost/projecte-daw/index.php");
-exit();
+        exit();
     }
 
     public function update()
@@ -56,12 +55,16 @@ exit();
         }
 
         if (isset($_POST['updatecart'])) {
-
         }
 
         header("Location: http://localhost/projecte-daw/index.php");
     }
 
+    public function remove()
+    {
+        $column = array_column($_SESSION['cart'], 'product_id');
+        $found_key = array_search($_POST['remove'], $column);
+        array_splice($_SESSION['cart'], $found_key, 1);
+        header("Location: http://localhost/projecte-daw/index.php");
+    }
 }
-
-
