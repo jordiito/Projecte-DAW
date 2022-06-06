@@ -14,13 +14,12 @@ try {
 $res = $result;
 
 //print_r($res);
-
+$id = $res['id'];
 $nom = $res['marca'] . " " . $res['model'];
 $descripcio = $res['descripcio'];
 $img = $res['imatge'];
 $preu = $res['preu'];
 $pes = $res['pes'];
-// echo $img;
 
 ?>
 <div id="single-product">
@@ -32,9 +31,12 @@ $pes = $res['pes'];
     <h3><?php echo $descripcio; ?></h3>
     <p class="preu"><?php echo $preu; ?>€</p>
     <form action="index.php?url=CarretoController/add" method="post">
-      <input type="number" name="quantity" value="1" min="1" max="<?= $product['quantity'] ?>" placeholder="Quantity" required>
-      <input type="hidden" name="product_id" value="<?= $pid ?>">
-      <input type="submit" value="Add To Cart">
+      <input type="number" name="qty" value="1" min="1" max="<?php $product['quantity'] ?>" placeholder="Quantity" required>
+      <input type='hidden' name='img' value="<?php echo $img; ?>"/>
+			<input type='hidden' name='nom' value="<?php echo $nom; ?>"/>
+			<input type='hidden' name='preu' value="<?php echo $preu; ?>"/>
+      <input type="hidden" name="product_id" value="<?php echo $pid; ?>">
+      <button type='submit' name='add_to_cart' value="<?php echo $pid; ?>">Afegir al carretó</button>
     </form>
   </div>
 

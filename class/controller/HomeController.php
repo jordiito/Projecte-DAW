@@ -10,7 +10,6 @@ class HomeController extends Controller
 
     public function show()
     {
-        include_once "php/functions.php";
         include_once "config.php";
 
         include "templates/tpl_head.php";

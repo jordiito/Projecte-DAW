@@ -332,9 +332,12 @@ footer p {
 }
 
 #carrito table {
+	display: block;
 	text-align: center;
 	margin: 0 auto;
 	border-collapse: collapse;
+	max-height: 300px;
+	overflow-y: scroll;
 }
 
 .imgCarreto {
