@@ -55,16 +55,28 @@ class CarretoController extends Controller
         }
 
         if (isset($_POST['updatecart'])) {
+            foreach($_POST['qty'] as $id => $quantitat) {
+                $column = array_column($_SESSION['cart'], 'product_id');
+                $found_key = array_search($id, $column);
+                $_SESSION['cart'][$found_key]['product_qty'] = $quantitat;
+            }
         }
 
         header("Location: http://localhost/projecte-daw/index.php");
+        exit();
     }
 
     public function remove()
     {
-        $column = array_column($_SESSION['cart'], 'product_id');
-        $found_key = array_search($_POST['remove'], $column);
-        array_splice($_SESSION['cart'], $found_key, 1);
+        if (count($_SESSION['cart']) > 1) {
+            $column = array_column($_SESSION['cart'], 'product_id');
+            $found_key = array_search($_POST['remove'], $column);
+            array_splice($_SESSION['cart'], $found_key, 1);
+
+        } else {
+            unset($_SESSION['cart']);
+        }
         header("Location: http://localhost/projecte-daw/index.php");
+        exit();
     }
 }

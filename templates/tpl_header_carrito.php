@@ -1,6 +1,6 @@
 <div id="carrito">
+<form action='?url=CarretoController/update' method='post'>
     <?php
-    print_r($_SESSION['cart']);
     if (isset($_SESSION['cart'])) {
         $productoscarrito = $_SESSION['cart'];
         echo "
@@ -13,6 +13,7 @@
         <tbody>";
 
         foreach ($productoscarrito as $prod) {
+            $preu_qty = ($prod['product_price']*$prod['product_qty']);
             echo "
                     <tr id=$prod[product_id]>
                         <td>
@@ -21,23 +22,22 @@
                         <td>
                             <span>$prod[product_name]</span>
                             <form action='?url=CarretoController/remove' method='post'>
-                            <button type='submit' name='remove' value=$prod[product_id]>Remove</button>
+                            <button type='submit' name='remove' value=$prod[product_id]>Eliminar</button>
                             </form>
                         </td>
                         <td>
-                            <input name='nom' id='producteid' type='number' min='0' value='$prod[product_qty]' />
+                            <input name='qty[$prod[product_id]]' id='producteqty' type='number' min='0' value='$prod[product_qty]' />
                         </td>
                         <td>
-                            <span>$prod[product_price]€</span>
+                            <span>$preu_qty €</span>
                         </td>
                     </tr>";
         }
     } else {
         echo '<p>El carretó està buit :(</p>';
     }
-
     ?>
-    <form action='?url=CarretoController/update' method='post'>
+
         <button type='submit' name='clear' value="Netejar">Netejar</button>
         <button type='submit' name='updatecart' value="Actualitzar">Actualitzar</button>
     </form>
