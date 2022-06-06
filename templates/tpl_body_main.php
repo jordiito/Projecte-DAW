@@ -20,32 +20,14 @@ try {
 //print_r($_POST);
 
 if (isset($_POST['add_to_cart'])) {
+	/*$products_array = array(
+		'product_id' => $_GET['id'],
+		'product_name' => $_POST['nom'],
+		'product_price' => $_POST['preu'],
+		'product_img' => $_POST['img'],
+		'product_qty' => 1
+	);*/
 
-	if (isset($_SESSION['cart'])) {
-		$item_array_id = array_column($_SESSION['cart'], "product_id");
-		if (!in_array($_GET['id'], $item_array_id)) {
-			$count = count($_SESSION['cart']);
-			$products_array = array(
-				'product_id' => $_GET['id'],
-				'product_name' => $_POST['nom'],
-				'product_price' => $_POST['preu'],
-				'product_img' => $_POST['img'],
-				'product_qty' => 1
-			);
-			$_SESSION["cart"][$count] = $products_array;
-		} else {
-			echo '<script>alert("Aquest producte ja esta al teu carreto, pots augmentar la quantitat accedint a ell")</script>';
-		}
-	} else {
-		$products_array = array(
-			'product_id' => $_GET['id'],
-			'product_name' => $_POST['nom'],
-			'product_price' => $_POST['preu'],
-			'product_img' => $_POST['img'],
-			'product_qty' => 1
-		);
-		$_SESSION["cart"][0] = $products_array;
-	}
 }
 
 ?>
@@ -97,7 +79,7 @@ if (isset($_POST['add_to_cart'])) {
 					<a href='index.php?url=ProducteController/show&amp;p=$p[id]'><p>$p[marca] $p[model]</p>
 					<img src='productes/$p[imatge]'/></a>
 					<p>$p[preu]€ (IVA Inclòs)</p>
-					<form action='index.php?id=$p[id]' method='post'>
+					<form action='?url=CarretoController/add' method='post'>
 					<input type='hidden' name='img' value='$p[imatge]'/>
 					<input type='hidden' name='nom' value='$p[marca] $p[model]'/>
 					<input type='hidden' name='preu' value='$p[preu]'/>
