@@ -78,7 +78,7 @@ class CarretoController extends Controller
             print_r($_SESSION['cart']);
             $mComanda = new ComandaModelo();
             $this->comanda = new Comanda();
-            $this->comanda->setUserId($this->sanitize($_POST['user_id']));
+            $this->comanda->setUserId($this->sanitize($_SESSION['user_id']));
             $this->comanda->setPagamentId($this->sanitize('1234'));
             $mComanda->save($this->comanda);
             $ultComanda = $mComanda->getLastId();

@@ -32,6 +32,7 @@ class UsuarioController extends Controller
                 if (($result = $mUsuario->getByEmail($this->user)) instanceof Usuario) {
                     // INICIA LA SESSIÓ
                     $_SESSION['loggedin'] = true;
+                    $_SESSION['user_id'] = $result->getId();
                     $_SESSION['username'] = $result->getNom() . " " . $result->getCognoms();
                     $_SESSION['email'] = $result->getEmail();
 
@@ -63,6 +64,10 @@ class UsuarioController extends Controller
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Logout'])) {
             unset($_SESSION['loggedin']);
+            unset($_SESSION['user_id']);
+            unset($_SESSION['username']);
+            unset($_SESSION['username']);
+            unset($_SESSION['email']);
 
            $vUser = new UsuarioView();
            $vUser->login();
