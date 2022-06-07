@@ -19,26 +19,26 @@
 						<span class="error"> <?php echo (isset($errorsDetectats["baseDades"]))?$errorsDetectats["baseDades"]:"";?> </span><br>
 						<span class="error"> <?php echo (isset($errorsDetectats["error"]))?$errorsDetectats["error"]:"";?> </span><br>
 						<h4>Les meves dades:</h4>
-						<label>Nom:</label>
+						<label class="center">Nom:</label>
 				<?php   echo $input_nom . "<br>";?>
-						<label>Cognoms:</label>
+						<label class="center">Cognoms:</label>
 				<?php  echo $input_cognoms . "<br>";?>
 						<label>Sexe: </label>
 				<?php  echo "<div id='homeDona'>$select_Sexe</div>" . "<br>";?>
-					<label>Data de naixement:</label>
+					<label class="center">Data de naixement:</label>
 				<?php  echo $input_naixement . "<br>";?>
 
-			<label>Pais:</label>
+			<label class="center">Pais:</label>
 			<?php echo $input_pais . "<br>";?>
-					<label>Adreca:</label>
+					<label class="center">Adreca:</label>
 			<?php echo $input_adreca . "<br>";?>
-					<label>C.P.:</label>
+					<label class="center">C.P.:</label>
 			<?php echo $input_cp . "<br>";?>
-					<label>Poblacio:</label>
+					<label class="center">Poblacio:</label>
 			<?php echo $input_poblacio . "<br>";?>
-					<label>Provincia:</label>
+					<label class="center">Provincia:</label>
 			<?php echo $input_provincia . "<br>";?>
-					<label>Teléfon:</label>
+					<label class="center">Teléfon:</label>
 			<?php echo $input_telefon . "<br>";?>
 			<?php echo $input_bSend . "<br>";?>
 

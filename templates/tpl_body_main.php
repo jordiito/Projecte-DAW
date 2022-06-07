@@ -36,7 +36,7 @@ try {
 		<div id="categories" class="mostra">
 			<h2>Filtres</h2>
 			<form action="index.php" method="get">
-				<p>Categoria</p>
+				<h3>Categoria</h3>
 				<input type="radio" id="ord" name="categoria" value="Sobretaula">
 				<label for="ord">Sobretaula</label><br>
 				<input type="radio" id="port" name="categoria" value="Portàtils">
@@ -49,7 +49,7 @@ try {
 				<label for="altaveus">Altaveus</label><br>
 				<input type="radio" id="auriculars" name="categoria" value="Auriculars">
 				<label for="auriculars">Auriculars</label><br>
-				<p>Ordre</p>
+				<h3>Ordre</h3>
 				<input type="radio" id="prb" name="ordre" value="preu desc">
 				<label for="prb">Preu alt a baix</label><br>
 				<input type="radio" id="pra" name="ordre" value="preu asc">

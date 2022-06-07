@@ -551,3 +551,9 @@ main {
 	font-size: 25px;
 	font-weight: bold;
 }
+
+.winfoo label.center {
+	display: block;
+	text-align: left;
+	padding-left: 30%;
+}

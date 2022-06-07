@@ -13,7 +13,7 @@ CREATE TABLE usuari (
     telefon int(9) NOT NULL,
     pais varchar(20) NOT NULL,
     direccio varchar(120) NOT NULL,
-    codi_postal int(5) DEFAULT NULL,
+    codi_postal varchar(5) DEFAULT NULL,
     poblacio varchar(80) NOT NULL,
     provincia varchar(50) NOT NULL
 );

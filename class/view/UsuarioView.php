@@ -52,6 +52,8 @@ class UsuarioView extends View
             $frmPro = $this->_user->getProvincia();
         }
 
+
+
         $options = [
             "type" => "password",
             "name" => "pass",
