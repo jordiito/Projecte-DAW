@@ -8,12 +8,6 @@ class CarretoController extends Controller
         parent::__construct();
     }
 
-    public function show()
-    {
-        $carreto = new CarretoController();
-        $carreto->show();
-    }
-
     public function add()
     {
         if (isset($_POST['add_to_cart'])) {
@@ -47,6 +41,7 @@ class CarretoController extends Controller
         header("Location: http://localhost/projecte-daw/index.php");
         exit();
     }
+    
 
     public function operacions()
     {
@@ -73,9 +68,11 @@ class CarretoController extends Controller
         }
 
         if (isset($_POST['comprar'])) {
+            
             if (isset($_SESSION['loggedin'])) {
             print_r($_POST);
             print_r($_SESSION['cart']);
+            
             $mComanda = new ComandaModelo();
             $this->comanda = new Comanda();
             $this->comanda->setUserId($this->sanitize($_SESSION['user_id']));
@@ -95,8 +92,10 @@ class CarretoController extends Controller
                 $mDetallsComanda->save($this->detallsComanda);
                 echo $subTotal;
             }
-        
+      
             unset($_SESSION['cart']);
+            
+              
         } else {
             $vUser = new UsuarioView();
             $vUser->login();
