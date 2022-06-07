@@ -1,6 +1,23 @@
-/* menu hamburguesa categories */
+/* menu hamburguesa, etc a totes les pagines*/
 
 window.onload = function() {
+
+    // El menu esta tancat al carregar la pagina en mobile
+    var widthInicial = window.innerWidth;
+    if (widthInicial <= 999) {
+        menu.style.display = 'none';
+    }
+
+    // Al redimensionar es torna a mostrar
+    function reportWindowSize() {
+        var width = window.innerWidth;
+        if (width > 999) {
+            menu.style.display = 'inline-block';
+        }
+    }
+    window.onresize = reportWindowSize;
+
+    // Display del carreto
     document.getElementById("carreto").addEventListener("click", function(e) {
         var carreto = document.getElementById("carrito");
         if (carreto.style.display != "none") {
@@ -9,15 +26,8 @@ window.onload = function() {
             carreto.style.display = "block";
         }
     });
-    document.getElementById("catboto").addEventListener("click", function(e) {
-        var cat = document.getElementById("categories");
-        if (cat.style.display != "none") {
-            cat.style.display = "none";
-        } else {
-            cat.style.display = "block";
-        }
-    });
 
+    // Display del menu
     document.getElementById("catmenu").addEventListener("click", function(e) {
         console.log(screen.width)
         var menu = document.getElementById("menu");
@@ -28,8 +38,6 @@ window.onload = function() {
         }
 
     });
-
-
 
     $('.toggleSeccio').click(function(e) {
         e.preventDefault();

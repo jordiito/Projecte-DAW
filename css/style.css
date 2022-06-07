@@ -53,8 +53,12 @@ button#cat, #catmenu {
 }
 
 #categories {
-	display: none;
+	display: block;
 	line-height: 2.5rem;
+}
+
+#catboto {
+	display:none;
 }
 
 #categories li {
@@ -118,6 +122,10 @@ aside {
 	padding: 1rem;
 }
 
+aside h3, aside h4 {
+	margin: 0;
+}
+
 .container {
 	display: flex;
 }
@@ -159,7 +167,7 @@ footer p {
 }
 
 .producte img {
-	width: 15rem;
+	width: 100%;
 }
 
 .footersec {
@@ -340,6 +348,7 @@ footer p {
 	border-collapse: collapse;
 	max-height: 300px;
 	overflow-y: scroll;
+	margin-bottom: 1rem;
 }
 
 .imgCarreto {
@@ -381,6 +390,53 @@ input {
 	margin-left: 0px;
 }
 
+
+main {
+	width: 80%;
+}
+
+.rg-container main {
+	width: auto;
+}
+
+#productimg {
+	float: left;
+	margin-right: 15rem;
+	margin-left: 5rem;
+}
+.prodimg {
+	width: 100%;
+}
+
+#productinfo {
+	padding: 1rem;
+	margin-top: 5rem;
+}
+
+#single-product {
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 5px;
+	margin: 1rem 25rem;
+	padding: 1rem;
+	height: 35rem;
+}
+
+.preu {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.winfoo label.center {
+	display: block;
+	text-align: left;
+	padding-left: 30%;
+}
+
+div#homeDona {
+	margin-left: 3.6rem;
+}
+
 @media only screen and (min-width: 1355px) {
 	ul#menu {
 		display: inline-block;
@@ -392,16 +448,14 @@ select.curt {
 	width: 344px;
 	height: 34px;
 }
-/*
-@media only screen and (min-width: 768px) and (max-width: 1354px) {
+
+@media only screen and (min-width: 1000px) and (max-width: 1440px) {
 	#mainmenu li, a {
 		margin-right: 0rem;
 	}
-	.producte img {
-		width: 9rem;
-	}
+
 }
-*/
+
 
 /* mobil*/
 @media only screen and (max-width: 999px) {
@@ -450,18 +504,17 @@ select.curt {
 	#carrito {
 		width: 100%;
 	}
-	aside {
+
+	ul#menu {
 		display: none;
 	}
-	.producte img {
-		width: 20rem;
-	}
 	.producte {
-		width: 90%;
+		width: 40%;
 	}
 	#productes {
 		margin: 0rem;
 		width: 85%;
+		float: right;
 	}
 	#carrito input[type="number"] {
 		width: 25px;
@@ -470,90 +523,45 @@ select.curt {
 		padding: 0;
 		margin: 0;
 	}
+	
 	.footersec {
-		margin: 0px;
-		line-height: 1.5rem;
+		display: block;
+		width: 100%;
+
 	}
-	.container {
+
+	.footersec p {
+		margin-bottom: 0;
+	}
+
+	aside {
+
+	}
+
+	#catboto {
 		display: block;
 	}
-	.footersubtitul {
-		border-top: solid 1px rgb(192, 187, 187);
-		border-bottom: solid 1px rgb(192, 187, 187);
-		padding-left: 30px;
-		padding-right: 30px;
-	}
-	.footersec img {
-		display: inline-block;
-		width: 15px;
-		height: 15px;
-		float: right;
-		padding-top: 16px;
-		padding-right: 15px;
-	}
-	.footersec li {
-		padding-bottom: 10px;
-	}
-	.footersec ul {
-		display: none;
-	}
-	.footersec a {
-		
-	}
-	.show {
-		display: block !important;
-	}
-	.toggleSeccio {
-		cursor: pointer;
-	}
-	footer .container {
-		margin: 0;
-		width: 100%;
-	}
-	footer {
-		padding: 0;
-	}
-}
 
+	#logo {
+		margin-left: 45%;
+	}
 
-main {
-	width: 80%;
-}
+	.rg-container {
+		width: 90%;
+	}
 
-.rg-container main {
-	width: auto;
-}
-
-#productimg {
-	float: left;
-	margin-right: 15rem;
-	margin-left: 5rem;
-}
-.prodimg {
+	div#homeDona {
+	margin-left: 0;
 	width: 100%;
-}
+	}
 
-#productinfo {
-	padding: 1rem;
-	margin-top: 5rem;
-}
+	.winfoo label.center {
+		padding-left: 15%;
+	}
 
-#single-product {
-	background-color: white;
-	border: 1px solid black;
-	border-radius: 5px;
-	margin: 1rem 25rem;
-	padding: 1rem;
-	height: 35rem;
-}
+	#carrito table {
+		width: 90%;
+	}
 
-.preu {
-	font-size: 25px;
-	font-weight: bold;
-}
 
-.winfoo label.center {
-	display: block;
-	text-align: left;
-	padding-left: 30%;
 }

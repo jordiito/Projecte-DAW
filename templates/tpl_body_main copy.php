@@ -1,6 +1,7 @@
 
 <div class="container">
 	<aside class="fl">
+		
 		<div id="catboto">
 			<button id="cat">
 				<img id="caticon" src="img/menu.png"></img>

@@ -14,13 +14,11 @@
 			<li><a href="index.php">Sobre nosaltres</a></li>
 		</ul>
 		<div id="user">
-			<a href="index.php?url=UsuarioController/logIn" class="icon"> <img
-				id="carticon" src="img/usuario.png"></img>
+			<a href="index.php?url=UsuarioController/logIn" class="icon"> <img id="carticon" src="img/usuario.png"></img>
 			</a>
 		</div>
 		<div id="carreto">
-			<a id="cart" class="icon"> <img id="carticon"
-				src="img/agregar-carrito.png"></img>
+			<a id="cart" class="icon"> <img id="carticon" src="img/agregar-carrito.png"></img>
 			</a>
 		</div>
 	</div>

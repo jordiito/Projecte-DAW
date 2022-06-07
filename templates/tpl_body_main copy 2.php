@@ -28,7 +28,11 @@ try {
 
 <div class="container">
 	<aside class="fl">
-
+		<div id="catboto">
+			<button id="cat">
+				<img id="caticon" src="img/menu.png"></img>
+			</button>
+		</div>
 		<div id="categories" class="mostra">
 			<h2>Filtres</h2>
 			<form action="index.php" method="get">
