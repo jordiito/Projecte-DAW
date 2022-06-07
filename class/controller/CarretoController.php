@@ -68,11 +68,7 @@ class CarretoController extends Controller
         }
 
         if (isset($_POST['comprar'])) {
-            
-            if (isset($_SESSION['loggedin'])) {
-            print_r($_POST);
-            print_r($_SESSION['cart']);
-            
+            if (isset($_SESSION['loggedin'])) { 
             $mComanda = new ComandaModelo();
             $this->comanda = new Comanda();
             $this->comanda->setUserId($this->sanitize($_SESSION['user_id']));
@@ -100,9 +96,6 @@ class CarretoController extends Controller
             $vUser = new UsuarioView();
             $vUser->login();
         }
-        
-
-            // printf ("New Record has id %d.\n", $mComanda->getLastId());
         }
 
         header("Location: http://localhost/projecte-daw/index.php");

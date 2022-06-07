@@ -23,7 +23,6 @@ try {
 	print "Error!: " . $e->getMessage() . "<br/>";
 	die();
 }
-print_r($_SESSION);
 ?>
 
 <div class="container">
