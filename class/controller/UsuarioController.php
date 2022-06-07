@@ -10,11 +10,18 @@ class UsuarioController extends Controller
         parent::__construct();
     }
 
-    public function logIn()
+    public function login()
     {
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
-            $vUser = new UsuarioView();
-            $vUser->login();
+            if ($_SESSION['loggedin'] == true) {
+                $muser = new UsuarioModelo();
+                $user = $muser->getByEmailTot($_SESSION['email']);
+                $vUser = new UsuarioView($user);
+                $vUser->logout();
+            } else {
+                $vUser = new UsuarioView();
+                $vUser->login();
+            }
         } else {
             $errorsDetectats = $this->validaDadesLogIn();
             if (isset($errorsDetectats)) {
@@ -27,8 +34,12 @@ class UsuarioController extends Controller
                     $_SESSION['loggedin'] = true;
                     $_SESSION['username'] = $result->getNom() . " " . $result->getCognoms();
                     $_SESSION['email'] = $result->getEmail();
-                    header("Location: index.php");
-                    exit();
+
+                    // header("Location: index.php");
+                    // exit();
+                    $user = $mUsuario->getByEmailTot($_SESSION['email']);
+                    $vUser = new UsuarioView($user);
+                    $vUser->logout();
                 } else {
                     $vUser = new UsuarioView($this->user);
                     $vUser->logIn($result);
@@ -45,40 +56,81 @@ class UsuarioController extends Controller
         $this->user = new Usuario();
         $this->user->setEmail($sEmail);
         $this->user->setPassword($sPassword, $sPassword);
-
         return $this->user->errorsDetectats;
     }
 
-    /*
-     * public function logout()
-     * {
-     * $_SESSION['loggedin'] = false;
-     * unset($_SESSION['username']);
-     * unset($_SESSION['email']);
-     * unset($_SESSION['img']);
-     * header("Location: index.php");
-     * exit();
-     * }
-     *
-     * public function confirmacio($param)
-     * {
-     * if (! isset($param)) {
-     * throw new Exception("Falten dades per la confirmació");
-     * }
-     * $this->user = new Usuario();
-     * $this->user->setId($this->sanitize($param[0], 0));
-     *
-     * $mUser = new UsuarioModelo();
-     * $errorsDetectats = $mUser->confirma($this->user);
-     *
-     * $vError = new ErrorView();
-     * if (isset($errorsDetectats)) {
-     * $vError->showMessage("Procès finalitzat amb errors", "El procès de verificació ha produït un error: <br> {$errorsDetectats["baseDades"]}");
-     * } else {
-     * $vError->showOk("Procès finalitzat correctament", "El procès de registre ha finacilitzat amb éxit, el mail està validat.<br>Ara ja podràs accedir a la noastra àrea privada.<br><br>Moltes gràcies<br>");
-     * }
-     * }
-     */
+    public function logout()
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Logout'])) {
+            unset($_SESSION['loggedin']);
+
+           $vUser = new UsuarioView();
+           $vUser->login();
+        } else if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Guardar'])) {
+            $errorsDetectats = $this->validaDadesRegistre2();
+            if (isset($errorsDetectats)) {
+                $errorsDetectats["error"] = "S'ha detectat algun tipus d'error. Revisa les dades introduides.";
+                $vUser = new UsuarioView($this->user);
+                $vUser->logout($errorsDetectats);
+            } else {
+                $errorsDetectats["error"] = "Les dades ja s'han modificat!";
+                $vUser = new UsuarioView($this->user);
+                $vUser->logout($errorsDetectats);
+            }
+        } else if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['changeContra'])) {
+            $muser = new UsuarioModelo();
+            $user = $muser->getByEmailTot($_SESSION['email']);
+            if (($_POST["pass"] == "")) {
+                $errorsDetectats["pass"] = "El password anterior no pot ser null";
+            } else if (($_POST["cpass"] == "")) {
+                $errorsDetectats["pass"] = "El password no pot ser null";
+            } else {
+                if ($_POST["pass0"] != $_POST["pass"]) {
+                    $errorsDetectats["cpass"] = "La password incorrecta";
+                }
+            }
+            if (isset($errorsDetectats)) {
+                $errorsDetectats["error"] = "S'ha detectat algun tipus d'error. Revisa les dades introduides.";
+                $vUser = new UsuarioView($user);
+                $vUser->logout($errorsDetectats);
+            } else {
+                $muser->changePass($_POST["email"], $_POST["cpass"]);
+                $errorsDetectats["error"] = "La contrasenya s'ha modificat!";
+                $vUser = new UsuarioView($user);
+                $vUser->logout($errorsDetectats);
+            }
+        } else {
+            if ($_SESSION['loggedin'] == true) {
+                $muser = new UsuarioModelo();
+                $user = $muser->getByEmailTot($_SESSION['email']);
+                $vUser = new UsuarioView($user);
+                $vUser->logout();
+            } else {
+                $vUser = new UsuarioView();
+                $vUser->login();
+            }
+        }
+    }
+
+    public function confirmacio($param)
+    {
+        if (! isset($param)) {
+            throw new Exception("Falten dades per la confirmació");
+        }
+        $this->user = new Usuario();
+        $this->user->setId($this->sanitize($param[0], 0));
+
+        $mUser = new UsuarioModelo();
+        $errorsDetectats = $mUser->confirma($this->user);
+
+        $vError = new ErrorView();
+        if (isset($errorsDetectats)) {
+            $vError->showMessage("Procès finalitzat amb errors", "El procès de verificació ha produït un error: <br> {$errorsDetectats["baseDades"]}");
+        } else {
+            $vError->showOk("Procès finalitzat correctament", "El procès de registre ha finacilitzat amb éxit, el mail està validat.<br>Ara ja podràs accedir a la noastra àrea privada.<br><br>Moltes gràcies<br>");
+        }
+    }
+
     public function register()
     {
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -131,6 +183,33 @@ class UsuarioController extends Controller
             }
         }
 
+        return $this->user->errorsDetectats;
+    }
+
+    public function validaDadesRegistre2()
+    {
+        $this->user = new Usuario();
+        $this->user->setEmail($this->sanitize($_POST["email"], 1));
+        $this->user->setNom($this->sanitize($_POST["nom"], 1));
+        $this->user->setCognoms($this->sanitize($_POST["cognoms"], 1));
+        $this->user->setSexe($this->sanitize($_POST["sexe"], 2));
+        $this->user->setDatanaixement($this->sanitize($_POST["naixement"], 0));
+        $this->user->setPais($this->sanitize($_POST["pais"], 1));
+        $this->user->setAdreca($this->sanitize($_POST["adreca"], 1));
+        $this->user->setCodiPostal($this->sanitize($_POST["cp"], 0));
+        $this->user->setPoblacio($this->sanitize($_POST["poblacio"], 1));
+        $this->user->setProvincia($this->sanitize($_POST["provincia"], 1));
+        $this->user->setTelefon($this->sanitize($_POST["telefon"], 0));
+
+        $mUsuari = new UsuarioModelo();
+
+        if (! isset($this->user->errorsDetectats)) {
+            if (is_array($res = $mUsuari->change($this->user))) {
+                $this->user->errorsDetectats[] = $res;
+            } else {
+                $this->user->setId($res);
+            }
+        }
         return $this->user->errorsDetectats;
     }
 }

@@ -73,6 +73,7 @@ class CarretoController extends Controller
         }
 
         if (isset($_POST['comprar'])) {
+            if (isset($_SESSION['loggedin'])) {
             print_r($_POST);
             print_r($_SESSION['cart']);
             $mComanda = new ComandaModelo();
@@ -94,7 +95,13 @@ class CarretoController extends Controller
                 $mDetallsComanda->save($this->detallsComanda);
                 echo $subTotal;
             }
+        
             unset($_SESSION['cart']);
+        } else {
+            $vUser = new UsuarioView();
+            $vUser->login();
+        }
+        
 
             // printf ("New Record has id %d.\n", $mComanda->getLastId());
         }

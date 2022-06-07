@@ -1,6 +1,8 @@
 /* colors en principi
 https://www.colourlovers.com/palette/580974/Adrift_in_Dreams
 */
+
+
 body {
 	margin: 0;
 	font-family: "Roboto", sans-serif;
@@ -232,9 +234,9 @@ footer p {
 .contacte-block a, .rg-container input[type="submit"], .curt, .llarg {
 	border: 1.5px solid #79bd9a;
 	padding: 0.5rem;
-	color: white;
+
 	text-decoration: none;
-	background-color: #79bd9a;
+
 	border-radius: 0px;
 }
 
@@ -272,11 +274,11 @@ footer p {
 
 /*registre container*/
 .rg-container {
-	color: #3b8686;
+
 }
 
 .rg-container label {
-	color: #3b8686;
+
 	line-height: 2rem;
 }
 
@@ -287,7 +289,7 @@ footer p {
 	width: 300px;
 	padding: 0px 20px;
 	font-size: 18px;
-	color: #3b8686;
+
 }
 
 .rg-container input[type="button"] {
@@ -297,7 +299,7 @@ footer p {
 
 .rg-container a {
 	text-decoration: none;
-	color: #3b8686;
+
 	font-weight: bolder;
 }
 
@@ -390,7 +392,7 @@ select.curt {
 	width: 344px;
 	height: 34px;
 }
-
+/*
 @media only screen and (min-width: 768px) and (max-width: 1354px) {
 	#mainmenu li, a {
 		margin-right: 0rem;
@@ -399,9 +401,10 @@ select.curt {
 		width: 9rem;
 	}
 }
+*/
 
 /* mobil*/
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 999px) {
 	#catmenu {
 		display: block;
 		position: absolute;
@@ -515,6 +518,10 @@ select.curt {
 
 main {
 	width: 80%;
+}
+
+.rg-container main {
+	width: auto;
 }
 
 #productimg {

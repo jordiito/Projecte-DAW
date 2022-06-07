@@ -2,15 +2,6 @@
 
 class Configuracio
 {
-
-    private $_directoriDePujades;
-
-    // carpeta on emmagatzemearem les imatges pujades pels usuaris
-    private $_formatsImatgesPermesos;
-
-    // formats permesos
-    private $_mimesImatgesPermesos;
-
     // Dades de configuració per accés a base de dades
     private $_dbServidor;
 
@@ -28,9 +19,6 @@ class Configuracio
     {
         include "config.php";
 
-        $this->_directoriDePujades = $directoriDePujades;
-        $this->_formatsImatgesPermesos = $formatsImatgesPermesos;
-        $this->_mimesImatgesPermesos = $mimesImatgesPermesos;
         $this->_dbServidor = $dbServidor;
         $this->_dbUsernamePerConsultes = $dbUsernamePerConsultes;
         $this->_dbUsernamePerAccions = $dbUsernamePerAccions;

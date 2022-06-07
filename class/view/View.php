@@ -134,7 +134,7 @@ class View {
             
             $value["type"] = "checkbox";
             $value["id"] = $key;
-            $input = html_generaInput($value);
+            $input = $this->html_generaInput($value);
             $input = ($bChecked) ? str_replace(">","checked >",$input) : $input;
             
             if ($abans) {

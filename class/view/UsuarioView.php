@@ -30,6 +30,169 @@ class UsuarioView extends View
         include "templates/tpl_footer.php";
     }
 
+    public function logout($errorsDetectats = null)
+    {
+        if (isset($this->_user)) {
+            $frmNom = $this->_user->getNom();
+            $frmCognoms = $this->_user->getCognoms();
+            $frmEmail = $this->_user->getEmail();
+            $frmPass = $this->_user->getPassword();
+            $frmSex = $this->_user->getSexe();
+            if ($frmSex == "D") {
+                $frmSex = "Dona";
+            } else {
+                $frmSex = "Home";
+            }
+            $frmData = $this->_user->getDatanaixement();
+            $frmTel = $this->_user->getTelefon();
+            $frmPais = $this->_user->getPais();
+            $frmAdr = $this->_user->getAdreca();
+            $frmCod = $this->_user->getCodiPostal();
+            $frmPob = $this->_user->getPoblacio();
+            $frmPro = $this->_user->getProvincia();
+        }
+
+        $options = [
+            "type" => "password",
+            "name" => "pass",
+            "placeholder" => "Contrasenya Anterior",
+            "class" => "llarg",
+            "value" => "",
+            "span" => $errorsDetectats["pass"]
+        ];
+        $input_pass = $this->html_generaInput($options);
+
+        $options = [
+            "type" => "password",
+            "name" => "cpass",
+            "placeholder" => "Nou contrasenya ",
+            "class" => "llarg",
+            "value" => "",
+            "span" => $errorsDetectats["cpass"]
+        ];
+        $input_cpass = $this->html_generaInput($options);
+
+        $options = [
+            "type" => "text",
+            "name" => "nom",
+            "placeholder" => $frmNom,
+            "class" => "llarg",
+            "value" => $frmNom,
+            "span" => $errorsDetectats["nom"]
+        ];
+        $input_nom = $this->html_generaInput($options);
+
+        $options = [
+            "type" => "text",
+            "name" => "cognoms",
+            "placeholder" => $frmCognoms,
+            "class" => "llarg",
+            "value" => $frmCognoms,
+            "span" => $errorsDetectats["cognoms"]
+        ];
+        $input_cognoms = $this->html_generaInput($options);
+
+        $opcions = [
+            "sexe1" => [
+                "name" => "sexe",
+                "class" => "llarg",
+                "value" => "H",
+                "checked" => ($frmSex == "Home") ? true : false,
+                "label" => "Home"
+            ],
+            "sexe2" => [
+                "name" => "sexe",
+                "class" => "llarg",
+                "value" => "D",
+                "checked" => ($frmSex == "Dona") ? true : false,
+                "label" => "Dona"
+            ]
+        ];
+        $select_Sexe = $this->html_generateRadioButon($opcions);
+
+        $options = [
+            "type" => "text",
+            "name" => "naixement",
+            "placeholder" => $frmData,
+            "class" => "llarg",
+            "value" => $frmData,
+            "span" => $errorsDetectats["dNaixement"]
+        ];
+        $input_naixement = $this->html_generaInput($options);
+
+        $options = [
+            "class" => "llarg",
+            "name" => "adreca",
+            "placeholder" => $frmAdr,
+            "value" => $frmAdr,
+            "span" => $errorsDetectats["adreca"]
+        ];
+        $input_adreca = $this->html_generaInput($options);
+
+        $options = [
+            "class" => "llarg",
+            "name" => "pais",
+            "placeholder" => $frmPais,
+            "value" => $frmPais,
+            "span" => $errorsDetectats["pais"]
+        ];
+        $input_pais = $this->html_generaInput($options);
+
+        $options = [
+            "class" => "llarg",
+            "class" => "curt",
+            "name" => "cp",
+            "placeholder" => $frmCod,
+            "value" => $frmCod,
+            "span" => $errorsDetectats["cp"]
+        ];
+        $input_cp = $this->html_generaInput($options);
+
+        $options = [
+            "class" => "llarg",
+            "class" => "curt",
+            "name" => "poblacio",
+            "placeholder" => $frmPob,
+            "value" => $frmPob,
+            "span" => $errorsDetectats["poblacio"]
+        ];
+        $input_poblacio = $this->html_generaInput($options);
+
+        $options = [
+            "class" => "llarg",
+            "class" => "curt",
+            "name" => "provincia",
+            "placeholder" => $frmPro,
+            "value" => $frmPro,
+            "span" => $errorsDetectats["provincia"]
+        ];
+        $input_provincia = $this->html_generaInput($options);
+
+        $options = [
+            "class" => "llarg",
+            "class" => "curt",
+            "name" => "telefon",
+            "placeholder" => $frmTel,
+            "value" => $frmTel,
+            "span" => $errorsDetectats["telefon"]
+        ];
+        $input_telefon = $this->html_generaInput($options);
+        $options = [
+            "type" => "submit",
+            "name" => "Guardar",
+            "class" => "submit action-button",
+            "value" => "Guardar"
+        ];
+        $input_bSend = $this->html_generaInput($options);
+
+        include "templates/tpl_head.php";
+        include "templates/tpl_header.php";
+
+        include "templates/tpl_body_logout.php";
+
+        include "templates/tpl_footer.php";
+    }
+
     public function register($errorsDetectats = null)
     {
         $sEmail = $this->_user->getEmail();
@@ -208,7 +371,7 @@ class UsuarioView extends View
             "class" => "curt",
             "name" => "provincia",
             "placeholder" => "Provincia",
-            "value" => $sProbincia,
+            "value" => $sProvincia,
             "span" => $errorsDetectats["provincia"]
         ];
         $input_provincia = $this->html_generaInput($options);
