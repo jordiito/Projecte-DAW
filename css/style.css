@@ -448,6 +448,34 @@ select.curt {
 	height: 34px;
 }
 
+#resumCompra {
+	padding-top: 3.5rem;
+	width: 100%;
+}
+
+#resumCompra table tbody tr td img {
+	width: 150px;
+}
+
+#resumCompra table, #resumCompra tr, #resumCompra td {
+	border: 1px solid black!important;
+	border-collapse: collapse!important;
+	padding-right: 0.5rem;
+	padding-left: 0.5rem;
+}
+
+#resumCompra table {
+	margin: 0 auto;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
 @media only screen and (min-width: 1000px) and (max-width: 1440px) {
 	#mainmenu li, a {
 		margin-right: 0rem;
@@ -507,9 +535,13 @@ select.curt {
 	ul#menu {
 		display: none;
 	}
+
+
+
 	.producte {
 		width: 40%;
 	}
+
 	#productes {
 		margin: 0rem;
 		width: 85%;
@@ -563,4 +595,16 @@ select.curt {
 	}
 
 
+}
+
+#taulacarreto tbody tr td {
+	padding: 1rem!important;
+}
+
+div.carrito  {
+	padding: 8rem!important;
+}
+table#taulacarreto tbody tr td input[type='number'].producteqty {
+	width: 30px;
+	margin: 0;
 }

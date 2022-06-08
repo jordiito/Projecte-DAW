@@ -38,7 +38,7 @@ class CarretoController extends Controller
             );
             $_SESSION["cart"][0] = $products_array;
         }
-        header("Location: http://localhost/projecte-daw/index.php");
+        header("Location: index.php");
         exit();
     }
     
@@ -98,7 +98,7 @@ class CarretoController extends Controller
         }
         }
 
-        header("Location: http://localhost/projecte-daw/index.php");
+        header("Location: index.php");
         exit();
     }
 }

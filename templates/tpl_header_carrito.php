@@ -28,7 +28,7 @@
 
                         </td>
                         <td>
-                            <input name='qty[$prod[product_id]]' id='producteqty' type='number' min='0' value='$prod[product_qty]' />
+                            <input name='qty[$prod[product_id]]' class='producteqty' type='number' min='0' value='$prod[product_qty]' />
                         </td>
                         <td>
                             <span>$preu_qty €</span>
@@ -50,8 +50,8 @@
             echo "
     <button type='submit' name='clear' value='Netejar'>Netejar</button>
     <button type='submit' name='updatecart' value='Actualitzar'>Actualitzar</button>
-    <p>Import total: $total €</p>
-    <button type='submit' name='comprar' value='Comprar'>Comprar</button>";
+    <p>Import total: $total €</p>";
+    //ANTIC BOTO DE COMPRA <button type='submit' name='comprar' value='Comprar'>Comprar</button>
         }
         ?>
     </form>
@@ -64,7 +64,7 @@ echo "
     <form action='charge.php' method='post' id='payment-form'>
         <div class='form-row'>
             <label for='card-element'>
-                Credit or debit card
+                Introdueix les dades de pagament
             </label>
             <div id='card-element'>
                 <!-- A Stripe Element will be inserted here. -->
@@ -74,7 +74,7 @@ echo "
             <div id='card-errors' role='alert'></div>
         </div>
 
-        <button>Submit Payment</button>
+        <button>Comprar</button>
     </form>
     <script src='stripe.js'></script>
     ";
