@@ -34,7 +34,7 @@ CREATE TABLE producte (
 CREATE TABLE comanda (
     id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     user_id int NOT NULL,
-    pagament_id int DEFAULT NULL,
+    pagament_id varchar(255) DEFAULT NULL,
     data timestamp NOT NULL DEFAULT NOW(),
     FOREIGN KEY(user_id) REFERENCES usuari(id)  
     on delete restrict
