@@ -5,11 +5,9 @@
 			<h1>Contacte</h1>
 			<div class="contacte-blocks">
 				<div class="contacte-block">
-				<a id="linkForm" href="?url=ContactFormController/show">
 					<img src="img/ticket.png " alt="ticket ">
-					<p class="contacte-title">Ticket</p>
-					<p>Envian's un ticket i rep una resposta al teu e-mail</p>
-					</a> 
+					<div class="contacte-title">Ticket</div>
+					<div>Envian's un ticket i rep una resposta al teu e-mail</div>
 				</div>
 				<div class="contacte-block">
 					<img src="img/xat.png " alt="Xat ">

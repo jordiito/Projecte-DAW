@@ -1,7 +1,6 @@
 /* colors
 https://www.colourlovers.com/palette/580974/Adrift_in_Dreams
 */
-
 body {
 	margin: 0;
 	font-family: "Roboto", sans-serif;
@@ -57,7 +56,7 @@ button#cat, #catmenu {
 }
 
 #catboto {
-	display:none;
+	display: none;
 }
 
 #categories li {
@@ -241,9 +240,7 @@ footer p {
 .contacte-block a, .rg-container input[type="submit"], .curt, .llarg {
 	border: 1.5px solid #79bd9a;
 	padding: 0.5rem;
-
 	text-decoration: none;
-
 	border-radius: 0px;
 }
 
@@ -279,13 +276,7 @@ footer p {
 	font-weight: bold;
 }
 
-/*registre container*/
-.rg-container {
-
-}
-
 .rg-container label {
-
 	line-height: 2rem;
 }
 
@@ -296,7 +287,6 @@ footer p {
 	width: 300px;
 	padding: 0px 20px;
 	font-size: 18px;
-
 }
 
 .rg-container input[type="button"] {
@@ -306,7 +296,6 @@ footer p {
 
 .rg-container a {
 	text-decoration: none;
-
 	font-weight: bolder;
 }
 
@@ -389,7 +378,6 @@ input {
 	margin-left: 0px;
 }
 
-
 main {
 	width: 80%;
 }
@@ -436,6 +424,30 @@ div#homeDona {
 	margin-left: 3.6rem;
 }
 
+.winfoo textarea {
+	width: 340px!important;
+}
+
+#taulacarreto tbody tr td {
+	padding: 1rem!important;
+}
+
+div.carrito  {
+	padding: 8rem!important;
+}
+table#taulacarreto tbody tr td input[type='number'].producteqty {
+	width: 30px;
+	margin: 0;
+}
+
+#linkForm {
+	display: inline-block;
+	width: 100%;
+	text-decoration: none;
+	border: none;
+	padding: 0;
+}
+
 @media only screen and (min-width: 1355px) {
 	ul#menu {
 		display: inline-block;
@@ -480,9 +492,7 @@ select.curt {
 	#mainmenu li, a {
 		margin-right: 0rem;
 	}
-
 }
-
 
 /* mobil*/
 @media only screen and (max-width: 999px) {
@@ -536,8 +546,6 @@ select.curt {
 		display: none;
 	}
 
-
-
 	.producte {
 		width: 40%;
 	}
@@ -558,15 +566,10 @@ select.curt {
 	.footersec {
 		display: block;
 		width: 100%;
-
 	}
 
 	.footersec p {
 		margin-bottom: 0;
-	}
-
-	aside {
-
 	}
 
 	#catboto {
@@ -594,17 +597,4 @@ select.curt {
 		width: 90%;
 	}
 
-
-}
-
-#taulacarreto tbody tr td {
-	padding: 1rem!important;
-}
-
-div.carrito  {
-	padding: 8rem!important;
-}
-table#taulacarreto tbody tr td input[type='number'].producteqty {
-	width: 30px;
-	margin: 0;
 }
