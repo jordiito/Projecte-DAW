@@ -44,7 +44,7 @@ nav div#user, nav div#carreto {
 	width: 2rem;
 }
 
-nav a.active, nav a:hover {
+nav a.active {
 	background-color: #3b8686;
 }
 
@@ -396,25 +396,27 @@ main {
 
 #productimg {
 	float: left;
-	margin-right: 15rem;
 	margin-left: 5rem;
 }
 .prodimg {
-	width: 100%;
+	width: 70%;
 }
 
 #productinfo {
-	padding: 1rem;
+	float: right;
 	margin-top: 5rem;
+	width: 50%;
 }
 
 #single-product {
 	background-color: white;
 	border: 1px solid black;
 	border-radius: 5px;
-	margin: 1rem 25rem;
+	margin: 1rem 5rem;
 	padding: 1rem;
 	height: 35rem;
+	width: 90%;
+	display: flex;
 }
 
 .preu {
@@ -603,6 +605,19 @@ select.curt {
 
 	#carrito table {
 		width: 90%;
+	}
+
+	#productinfo, #productimg {
+		float: none;
+		text-align: center;
+		margin: 0 auto;
+	}
+
+	#single-product {
+		display:block;
+		height: auto;
+		width: 75%;
+		text-align: center;
 	}
 
 }
