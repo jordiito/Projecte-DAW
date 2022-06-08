@@ -21,7 +21,7 @@ class ProducteModelo extends Model
             $producte->setMarca($j["marca"]);
             $producte->setModel($j["model"]);
             $producte->setCategoria($j["tipus"]);
-            $producte->setDescripcio($j["valoracio"]);
+            $producte->setDescripcio($j["descripcio"]);
             $producte->setImatge($j["imatge"]);
             $producte->setPreu($j["preu"]);
             $producte->setPes($j["polzades"]);

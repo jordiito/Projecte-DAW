@@ -26,6 +26,7 @@ class ContactFormController extends Controller {
             $this->missatge->setComentari($frmMsg);
             
             if (! isset($this->missatge->errors)) {
+                
                 if ($sFile = file_get_contents("missatgesDeContacte.xml")) {
                     $sLlibre = substr($sFile, 0, - 13);
                     $frmData = $this->missatge->getData();
@@ -41,6 +42,15 @@ class ContactFormController extends Controller {
                             throw new Exception("El fitxer no deixa escriure");
                         }
                         fclose($file);
+                        $assumpte = "Nou formulari de contacte - PCBuilds";
+                        $contingut = "Nom: $frmData" . "\r\n";
+                        $contingut .= "Correu: $frmMail" . "\r\n";
+                        $contingut .= "Data: $frmData" . "\r\n";
+                        $contingut .= "Missatge: $frmMsg" . "\r\n";
+                        $header = "From: bertran.daw22@gmail.com" . "\r\n";
+                        $header .= "Reply-To: bertran.daw22@gmail.com" . "\r\n";
+                        $header .= "X-Mailer: PHP/" . phpversion();
+                    mail($frmMail, $assumpte, $contingut, $header);
                     } else {
                         throw new Exception("No s'ha pogut obrir el fitxer per emmagatzemar informació");
                     }

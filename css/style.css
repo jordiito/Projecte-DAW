@@ -6,6 +6,14 @@ body {
 	font-family: "Roboto", sans-serif;
 }
 
+#logo img {
+	width: 200px;
+}
+
+#mainmenu {
+	margin-top: 0.5rem;
+}
+
 ul#menu {
 	display: inline-block;
 }
@@ -20,7 +28,7 @@ ul#menu {
 
 nav {
 	background-color: #79bd9a;
-	padding: 2rem;
+	padding:  1rem 2rem;
 	display: flex;
 	justify-content: space-between;
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;

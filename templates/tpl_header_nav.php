@@ -1,6 +1,6 @@
 <nav>
 	<div id="logo" class="fl">
-		<a href="index.php">Logo</a>
+		<a href="index.php"><img src="img/logo.png"></a>
 	</div>
 	<button id="catmenu">
 		<img id="caticon" src="img/menu.png"></img>

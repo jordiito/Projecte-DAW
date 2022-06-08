@@ -77,4 +77,28 @@
         <MAIL>sespinosa@gmail.com</MAIL>
         <COMENTARI>Asdefasdf asdfasdf</COMENTARI>
     </REGISTRE> 
+    <REGISTRE>
+        <DATA>8/6/2022</DATA>
+        <NOM>Jordi</NOM>
+        <MAIL>jordibertran7@outlook.com</MAIL>
+        <COMENTARI>Asdasdasd</COMENTARI>
+    </REGISTRE> 
+    <REGISTRE>
+        <DATA>8/6/2022</DATA>
+        <NOM>Jordi</NOM>
+        <MAIL>jordibertran7@outlook.com</MAIL>
+        <COMENTARI>1dasdasd</COMENTARI>
+    </REGISTRE> 
+    <REGISTRE>
+        <DATA>8/6/2022</DATA>
+        <NOM>Jordi</NOM>
+        <MAIL>jordibertran7@outlook.com</MAIL>
+        <COMENTARI>Asdasdasdasdasd</COMENTARI>
+    </REGISTRE> 
+    <REGISTRE>
+        <DATA>8/6/2022</DATA>
+        <NOM>Jordi</NOM>
+        <MAIL>jordibertran7@outlook.com</MAIL>
+        <COMENTARI>Asdasdasdasdasd</COMENTARI>
+    </REGISTRE> 
 </REGISTRES>
