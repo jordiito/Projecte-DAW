@@ -56,7 +56,7 @@
         ?>
     </form>
 
-    <?php if (isset($_SESSION['loggedin'])) {
+    <?php if (isset($_SESSION['loggedin']) && isset($_SESSION['cart'])) {
 
 echo "
     <script src='https://js.stripe.com/v3/'></script>
@@ -78,7 +78,7 @@ echo "
     </form>
     <script src='js/stripe.js'></script>
     ";
-} else {
+} elseif (isset($_SESSION['cart'])) {
     echo "<button type='submit' name='comprar' value='Comprar'>Comprar</button>";
 }
 ?>
