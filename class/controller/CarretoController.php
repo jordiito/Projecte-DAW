@@ -76,6 +76,7 @@ class CarretoController extends Controller
         // ACTUALMENT NO ES FA SERVIR, JA QUE EL PAGAMENT ES REALITZA PER STRIPE
         // I LES DADES ES DESEN DES DEL MATEIX ARXIU (charge.php)
         if (isset($_POST['comprar'])) {
+        /*
             if (isset($_SESSION['loggedin'])) { 
             $mComanda = new ComandaModelo();
             $this->comanda = new Comanda();
@@ -96,15 +97,17 @@ class CarretoController extends Controller
                 $mDetallsComanda->save($this->detallsComanda);
                 echo $subTotal;
             }
+                        unset($_SESSION['cart']);
+            */
       
-            unset($_SESSION['cart']);
+	
             
               
-        } else {
+        
             //Si l'usuari no té la sessió iniciada, mostra la pàgina de login
             $vUser = new UsuarioView();
             $vUser->login();
-        }
+        
         }
         //Redireccionar a index després de fer una operació amb el carretó
         header("Location: index.php");

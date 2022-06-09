@@ -51,8 +51,11 @@
     <button type='submit' name='clear' value='Netejar'>Netejar</button>
     <button type='submit' name='updatecart' value='Actualitzar'>Actualitzar</button>
     <p>Import total: $total €</p>";
-    //ANTIC BOTO DE COMPRA <button type='submit' name='comprar' value='Comprar'>Comprar</button>
-        }
+    
+    if (!isset($_SESSION['loggedin']) && isset($_SESSION['cart'])) {
+    	echo "<button type='submit' name='comprar' value='Comprar'>Comprar</button>";
+	}
+    }
         ?>
     </form>
 
@@ -78,8 +81,6 @@ echo "
     </form>
     <script src='js/stripe.js'></script>
     ";
-} elseif (isset($_SESSION['cart'])) {
-    echo "<button type='submit' name='comprar' value='Comprar'>Comprar</button>";
 }
 ?>
 </div>
