@@ -1,5 +1,7 @@
 <?php
 
+// Class de CarretoController, hereda les fucions de Controller
+// Controlador de Carretó
 class CarretoController extends Controller
 {
 
@@ -8,6 +10,7 @@ class CarretoController extends Controller
         parent::__construct();
     }
 
+//Funció per afegir productes al carretó
     public function add()
     {
         if (isset($_POST['add_to_cart'])) {
@@ -42,7 +45,8 @@ class CarretoController extends Controller
         exit();
     }
     
-
+// Funció que al ser cridada desde carretó, permet buidar el carretó
+// o actualitzar el seu contingut
     public function operacions()
     {
         if (isset($_POST['clear'])) {
@@ -57,6 +61,7 @@ class CarretoController extends Controller
             }
         }
 
+        //Elimina un producte en concret del carretó
         if (isset($_POST['remove'])) {
             if (count($_SESSION['cart']) > 1) {
                 $column = array_column($_SESSION['cart'], 'product_id');
@@ -67,6 +72,9 @@ class CarretoController extends Controller
             }
         }
 
+        // Funció per comprar
+        // ACTUALMENT NO ES FA SERVIR, JA QUE EL PAGAMENT ES REALITZA PER STRIPE
+        // I LES DADES ES DESEN DES DEL MATEIX ARXIU (charge.php)
         if (isset($_POST['comprar'])) {
             if (isset($_SESSION['loggedin'])) { 
             $mComanda = new ComandaModelo();
@@ -93,11 +101,12 @@ class CarretoController extends Controller
             
               
         } else {
+            //Si l'usuari no té la sessió iniciada, mostra la pàgina de login
             $vUser = new UsuarioView();
             $vUser->login();
         }
         }
-
+        //Redireccionar a index després de fer una operació amb el carretó
         header("Location: index.php");
         exit();
     }

@@ -1,5 +1,5 @@
 <?php
-
+//Controlador d'usuaris
 class UsuarioController extends Controller
 {
 
@@ -9,7 +9,7 @@ class UsuarioController extends Controller
     {
         parent::__construct();
     }
-
+    //Funció que comprova si l'usuari té sessió iniciada i en cas que no, mostra el formulari de Login
     public function login()
     {
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -48,7 +48,7 @@ class UsuarioController extends Controller
             }
         }
     }
-
+    //Funció que comprova que les dades introduïdes al login coincideixin amb les de la base de dades
     public function validaDadesLogIn()
     {
         $sEmail = $this->sanitize($_POST["nom"], 1);
@@ -60,6 +60,7 @@ class UsuarioController extends Controller
         return $this->user->errorsDetectats;
     }
 
+    //Funció que permet a l'usuari tancar la seva sessió
     public function logout()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Logout'])) {
@@ -136,6 +137,7 @@ class UsuarioController extends Controller
         }
     }
 
+    //Funció per registrar un usuari
     public function register()
     {
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -159,6 +161,7 @@ class UsuarioController extends Controller
         }
     }
 
+    //Sanititza tots els camps introduïts per l'usuari, per garantitzar que cap codi malintencionat arribi a la base de dades
     public function validaDadesRegistre()
     {
         $this->user = new Usuario();

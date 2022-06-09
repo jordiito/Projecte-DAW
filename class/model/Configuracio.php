@@ -1,5 +1,5 @@
 <?php
-
+//Classe on s'emmagatzemen les variables necessàries per realitzar la connexió a base de dades
 class Configuracio
 {
     // Dades de configuració per accés a base de dades

@@ -1,4 +1,6 @@
 <?php 
+
+//Conté les funcions necessàries per visualitzar el contingut de cada pàgina
 class View {
     private $idioma;
     private $loged;

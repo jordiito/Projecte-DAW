@@ -1,4 +1,6 @@
 <?php
+
+//Model de les dades rebudes des del formulari de contacte
 class Missatge {
     private $nom;
     private $email;

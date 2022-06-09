@@ -1,5 +1,6 @@
 <?php
 
+//Model on es defineixen totes les funcions necessàries per afegir i accedir a les dades dels detalls de la comanda
 class DetallsComandaModelo extends Model
 {
 

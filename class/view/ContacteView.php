@@ -1,5 +1,6 @@
 <?php
 
+//Vista de la pàgina de contacte, carrega els templates necessaris per la pàgina
 class ContacteView extends View
 {
 

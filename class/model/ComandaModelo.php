@@ -1,5 +1,6 @@
 <?php
-
+//Model de comanda, hereda les funcions de Model.
+//Es defineixen les queries necessàries per cada funció que es crida des de controller.
 class ComandaModelo extends Model
 {
 
@@ -24,6 +25,7 @@ class ComandaModelo extends Model
         }
     }
 
+    //Query per guardar la comanda a base de dades
     public function save(Comanda $comanda)
     {
         $sSql = "INSERT INTO comanda (id, user_id, pagament_id, data)";

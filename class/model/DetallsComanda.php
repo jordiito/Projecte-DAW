@@ -1,5 +1,6 @@
 <?php
-
+//Definició de l'estructura dels detalls de les comandes.
+//Inserta els productes amb la seva quantitat i preu a l'última comanda insertada en la taula de Comanda
 class DetallsComanda
 {
 

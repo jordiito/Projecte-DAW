@@ -1,5 +1,7 @@
 <?php
 
+//Model s'encarrega de d'administrar la connexió a base de dades fent servir les dades
+//Que conté l'arxiu Configuracio.php
 class Model
 {
 
@@ -96,6 +98,7 @@ class Model
      *            num -> una fila específica.
      * @return multitype: array amb els resultats en forma d'objecte.
      */
+
     public function obtenir_fila(mysqli_result $result, $fila)
     {
         if ($fila != 0) {
@@ -103,12 +106,12 @@ class Model
         }
         return $result->fetch_object();
     }
-
+    //Funció per comptar el nombre de files obtingudes com a resultat d'una query
     public function numeroDeFiles($result)
     {
         return $result->num_rows;
     }
-
+    //Funció per rebre l'últim error de la base de dades
     public function getLastError()
     {
         if (isset($this->queryLink->errno)) {
@@ -118,6 +121,8 @@ class Model
         }
     }
 
+    //Funció que reb l'id de l'últim insert en la taula especificada.
+    //Útil per insertar els detalls d'una comanda després de crear una comanda
     public function getLastId()
     {
         return $this->actionLink->insert_id;

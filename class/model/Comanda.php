@@ -1,5 +1,5 @@
 <?php
-
+//Classe comanda, on es defineix quina estructura han de tenir les comandes
 class Comanda
 {
 

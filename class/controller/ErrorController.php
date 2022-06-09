@@ -1,5 +1,5 @@
 <?php
-
+//Controlador d'errors, per evitar reduïr al màxim les excepcions no controlades.
 class ErrorController
 {
 

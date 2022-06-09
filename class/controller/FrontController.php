@@ -7,7 +7,7 @@ class FrontController extends Controller
     {
         parent::__construct();
     }
-
+    //Carrega les diferents urls segons els paràmetres rebuts per GET
     public function dispatch()
     {
         $params = null;

@@ -1,11 +1,12 @@
 <?php
 
+//Controlador, conté les funcions necessàries per operar amb els diferents tipus de dades
 class Controller
 {
 
     public function __construct()
     {}
-
+    //Funció sanitize, feta servir per netejar i comprovar les dades que ens passa l'usuari
     function sanitize($stringANetejar, $convertirAlowercase = 0)
     {
         if (empty($stringANetejar)) {
@@ -69,6 +70,7 @@ class Controller
         return $stringANetejar;
     }
 
+    //Funcions que generen diferents tipus de camps select, input...
     /*
      * funció html_generateSelect: a partir d'un array associatiu, genera codi
      * html per la visualització d'un control SELECT-OPTION generand un menú

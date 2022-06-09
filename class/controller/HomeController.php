@@ -1,5 +1,6 @@
 <?php
-
+// Class Homecontroller, class fill de Controller
+// per la pàgina inici
 class HomeController extends Controller
 {
 
@@ -7,7 +8,7 @@ class HomeController extends Controller
     {
         parent::__construct();
     }
-
+    //Inclou els arxius necessaris per mostrar la pàgina d'inici
     public function show()
     {
         include_once "config.php";

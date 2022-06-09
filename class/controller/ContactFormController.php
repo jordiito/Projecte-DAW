@@ -1,16 +1,20 @@
 <?php
+
+//Controller del formulari de contacte, hereda les fucions de Controller
 class ContactFormController extends Controller {
     private $missatge;
     
+    //Constructor
     public function __construct($msg=null) {
         parent::__construct();
         if (isset($msg)) {
-            $this->missatge = msg;
+            $this->missatge = $msg;
         } else {
             $this->missatge=new Missatge();
         }
     }
     
+    //Funció que mostra la vista del formulari de contacte
     public function show() {
         if ($_SERVER["REQUEST_METHOD"]=="GET") {
             $vContact = new ContactFormView();

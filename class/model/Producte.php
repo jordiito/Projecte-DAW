@@ -1,8 +1,8 @@
 <?php
-
+// Definició de l'estructura de dades dels productes
 class Producte
 {
-
+    // les variables
     private $id;
 
     private $gtin;

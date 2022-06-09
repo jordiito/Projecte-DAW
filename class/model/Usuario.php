@@ -1,8 +1,8 @@
 <?php
-
+// Class d'usuari, conté l'estructura de dades dels usuaris
 class Usuario
 {
-
+    // Les variables
     private $id;
 
     private $email;

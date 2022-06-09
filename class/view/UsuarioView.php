@@ -1,5 +1,5 @@
 <?php
-
+//Vista de la pàgina de contacte, carrega els templates necessaris per la pàgina
 class UsuarioView extends View
 {
 
@@ -14,7 +14,7 @@ class UsuarioView extends View
             $this->_user = new Usuario();
         }
     }
-
+    // Carrega la pàgina de login
     public function login($errorsDetectats = null)
     {
         if (isset($this->_user)) {
@@ -29,7 +29,7 @@ class UsuarioView extends View
 
         include "templates/tpl_footer.php";
     }
-
+    // Carrega la pàgina de logout/edició de dades
     public function logout($errorsDetectats = null)
     {
         if (isset($this->_user)) {
@@ -51,9 +51,7 @@ class UsuarioView extends View
             $frmPob = $this->_user->getPoblacio();
             $frmPro = $this->_user->getProvincia();
         }
-
-
-
+        //Funcions que generen diferents tipus d'inputs segons les dades rebudes per $options
         $options = [
             "type" => "password",
             "name" => "pass",

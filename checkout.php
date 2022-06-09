@@ -1,3 +1,7 @@
+<!-- Fitxer PHP que conté el formulari necessari i importa 
+     Els scripts JS necessaris per completar el pagament sense rebre
+     Les dades al nostre servidor, ells s'encarreguen de processar-les
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="stripe.css">
+    <link rel="stylesheet" href="css/stripe.css">
     <title>Document</title>
 </head>
 
@@ -27,7 +31,7 @@
 
         <button>Submit Payment</button>
     </form>
-    <script src="stripe.js"></script>
+    <script src="js/stripe.js"></script>
 </body>
 
 </html>
