@@ -24,7 +24,7 @@ CREATE TABLE producte (
     marca varchar(40) NOT NULL,
     model varchar(40) NOT NULL,
     categoria varchar(40) DEFAULT NULL,
-    descripcio varchar(340) DEFAULT NULL,
+    descripcio varchar(999) DEFAULT NULL,
     imatge varchar(100) DEFAULT NULL,
     preu decimal(10,2) NOT NULL,
     pes decimal(10,2) NOT NULL

@@ -76,7 +76,7 @@ echo "
 
         <button>Comprar</button>
     </form>
-    <script src='stripe.js'></script>
+    <script src='js/stripe.js'></script>
     ";
 } else {
     echo "<button type='submit' name='comprar' value='Comprar'>Comprar</button>";

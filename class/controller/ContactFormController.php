@@ -54,7 +54,7 @@ class ContactFormController extends Controller {
                         $header = "From: bertran.daw22@gmail.com" . "\r\n";
                         $header .= "Reply-To: bertran.daw22@gmail.com" . "\r\n";
                         $header .= "X-Mailer: PHP/" . phpversion();
-                    mail($frmMail, $assumpte, $contingut, $header);
+                    mail('bertran.daw22@gmail.com', $assumpte, $contingut, $header);
                     } else {
                         throw new Exception("No s'ha pogut obrir el fitxer per emmagatzemar informació");
                     }
